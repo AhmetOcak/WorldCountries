@@ -18,8 +18,7 @@
         android:id="@+id/mv_country"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/two_level_margin"
-        app:cardUseCompatPadding="true">
+        app:cardElevation="2dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -44,11 +43,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/one_level_margin"
                 android:layout_marginTop="@dimen/one_level_margin"
+                android:ellipsize="end"
                 android:maxLines="1"
                 android:text="@{name}"
                 android:textAlignment="textStart"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:ellipsize="end"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/iv_country_flag" />
