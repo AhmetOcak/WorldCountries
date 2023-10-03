@@ -26,7 +26,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_home_title"
@@ -36,6 +36,7 @@
             android:layout_marginTop="@dimen/one_level_margin"
             android:text="@string/app_name"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:visibility="@{isLoading ? View.INVISIBLE : View.VISIBLE}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,6 +48,7 @@
             android:layout_marginTop="@dimen/two_level_margin"
             android:orientation="horizontal"
             android:background="@drawable/custom_border"
+            android:visibility="@{isLoading ? View.INVISIBLE : View.VISIBLE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_home_title">
