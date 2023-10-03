@@ -12,6 +12,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
+import com.worldcountries.R
+import com.worldcountries.common.MarginItemDecoration
 import com.worldcountries.databinding.FragmentHomeBinding
 import com.worldcountries.ui.home.adapter.CountryListAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,6 +42,9 @@ class HomeFragment : Fragment() {
         binding.rvHomeCountryList.apply {
             this.adapter = adapter
             layoutManager = GridLayoutManager(context, getGridSpan())
+            addItemDecoration(
+                MarginItemDecoration(resources.getDimensionPixelSize(R.dimen.two_level_margin))
+            )
         }
 
         viewLifecycleOwner.lifecycleScope.launch {

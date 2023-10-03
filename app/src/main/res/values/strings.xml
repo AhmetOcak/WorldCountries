@@ -12,4 +12,6 @@
     <string name="network">Please check your internet connection!!</string>
     <string name="unknown">Something went wrong. Please try again later!!</string>
     <string name="country_details">country details</string>
+    <string name="sort">Sort</string>
+    <string name="filter">Filter</string>
 </resources>
