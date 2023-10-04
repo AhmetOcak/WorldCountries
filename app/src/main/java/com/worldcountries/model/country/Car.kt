@@ -1,4 +1,4 @@
-package com.worldcountries.model
+package com.worldcountries.model.country
 
 import com.google.gson.annotations.SerializedName
 

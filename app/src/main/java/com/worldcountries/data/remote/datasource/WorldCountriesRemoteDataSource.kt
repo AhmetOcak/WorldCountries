@@ -1,7 +1,7 @@
 package com.worldcountries.data.remote.datasource
 
 import com.worldcountries.common.Response
-import com.worldcountries.model.Country
+import com.worldcountries.model.country.Country
 
 interface WorldCountriesRemoteDataSource {
 

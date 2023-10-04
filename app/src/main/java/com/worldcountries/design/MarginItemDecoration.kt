@@ -1,4 +1,4 @@
-package com.worldcountries.common
+package com.worldcountries.design
 
 import android.graphics.Rect
 import android.view.View

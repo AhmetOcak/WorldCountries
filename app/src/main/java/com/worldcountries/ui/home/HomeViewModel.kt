@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.worldcountries.common.Response
 import com.worldcountries.data.repository.WorldCountriesRepository
-import com.worldcountries.model.Country
+import com.worldcountries.model.country.Country
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -54,6 +54,14 @@ class HomeViewModel @Inject constructor(
     }
 }
 
+/*
+Filter options
++ region
++ population
++ languages
++ car side
++ continents
+ */
 
 data class HomeUiState(
     val isLoading: Boolean = false,

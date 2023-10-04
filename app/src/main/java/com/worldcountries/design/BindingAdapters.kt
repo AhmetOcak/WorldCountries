@@ -1,4 +1,4 @@
-package com.worldcountries.common
+package com.worldcountries.design
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
