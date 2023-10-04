@@ -1,0 +1,103 @@
+package com.worldcountries.ui.filter
+
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.worldcountries.databinding.FragmentFilterCountryListBinding
+import com.worldcountries.ui.filter.adapter.FilterAdapter
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+
+@AndroidEntryPoint
+class FilterCountryListFragment : Fragment() {
+
+    private var _binding: FragmentFilterCountryListBinding? = null
+    private val binding: FragmentFilterCountryListBinding get() = _binding!!
+
+    private val viewModel: FilterCountryListViewModel by viewModels()
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentFilterCountryListBinding.inflate(layoutInflater)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val adapter = FilterAdapter()
+        binding.rvFilter.apply {
+            this.adapter = adapter
+            layoutManager = LinearLayoutManager(requireContext())
+        }
+
+        binding.toolbar.setNavigationOnClickListener {
+            if (viewModel.uiState.value.isFilterTypeSelected) {
+                viewModel.resetFilterParams()
+            } else {
+                findNavController().navigateUp()
+            }
+        }
+
+        setFilterButtonsListener()
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.collect { uiState ->
+                    binding.apply {
+                        isFilterTypeSelected = uiState.isFilterTypeSelected
+                        title = uiState.title
+                    }
+
+                    if (uiState.filters.isNotEmpty()) {
+                        adapter.submitList(uiState.filters)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun setFilterButtonsListener() {
+        binding.btnContinent.setOnClickListener {
+            viewModel.apply {
+                setFilterTypeSelected()
+                setSelectedFilterType(FilterType.CONTINENT)
+                setTitle("Continent")
+            }
+        }
+
+        binding.btnPop.setOnClickListener {
+            viewModel.apply {
+                setFilterTypeSelected()
+                setSelectedFilterType(FilterType.POPULATION)
+                setTitle("Population")
+            }
+        }
+
+        binding.btnRegion.setOnClickListener {
+            viewModel.apply {
+                setFilterTypeSelected()
+                setSelectedFilterType(FilterType.REGIONS)
+                setTitle("Regions")
+            }
+        }
+
+        binding.btnTrafficSide.setOnClickListener {
+            viewModel.apply {
+                setFilterTypeSelected()
+                setSelectedFilterType(FilterType.CAR_SIDE)
+                setTitle("Car Side")
+            }
+        }
+    }
+}

@@ -14,4 +14,11 @@
     <string name="country_details">country details</string>
     <string name="sort">Sort</string>
     <string name="filter">Filter</string>
+    <string name="see_the_results">See the results</string>
+    <string name="region">Region</string>
+    <string name="population">Population</string>
+    <string name="language">Language</string>
+    <string name="car_side">Car Side</string>
+    <string name="continent">Continent</string>
+    <string name="apply">Apply</string>
 </resources>
