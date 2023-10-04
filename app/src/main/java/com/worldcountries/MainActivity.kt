@@ -3,6 +3,9 @@ package com.worldcountries
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.worldcountries.databinding.ActivityMainBinding
 import com.worldcountries.ui.favorites.FavoritesFragment
 import com.worldcountries.ui.home.HomeFragment
@@ -21,24 +24,10 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setCurrentFragment(HomeFragment())
-
-        binding.bottomNavigationView.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.home -> { setCurrentFragment(HomeFragment()) }
-                R.id.search -> { setCurrentFragment(SearchFragment()) }
-                R.id.favorites -> { setCurrentFragment(FavoritesFragment()) }
-                R.id.settings -> { setCurrentFragment(SettingsFragment()) }
-            }
-            true
-        }
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        val navController = navHostFragment.navController
+        binding.bottomNavigationView.setupWithNavController(navController)
     }
-
-    private fun setCurrentFragment(fragment: Fragment) =
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.frameLayout, fragment)
-            commit()
-        }
 
     override fun onDestroy() {
         super.onDestroy()
