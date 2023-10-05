@@ -1,6 +1,7 @@
 package com.worldcountries.ui.filter
 
 import androidx.lifecycle.ViewModel
+import com.worldcountries.model.filter.Filter
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -49,8 +50,7 @@ class FilterCountryListViewModel @Inject constructor() : ViewModel() {
             it.copy(
                 isFilterTypeSelected = false,
                 selectedFilterType = FilterType.NOTHING,
-                title = "Filter",
-                filters = listOf()
+                title = "Filter"
             )
         }
     }
@@ -60,28 +60,28 @@ data class FilterCountryListUiState(
     val isFilterTypeSelected: Boolean = false,
     val selectedFilterType: FilterType = FilterType.NOTHING,
     val title: String = "Filter",
-    val filters: List<String> = listOf()
+    val filters: List<Filter> = listOf()
 )
 
 private val regions = listOf(
-    "Africa",
-    "Americas",
-    "Asia",
-    "Europe",
-    "Oceania"
+    Filter("Africa", false),
+    Filter("Americas", false),
+    Filter("Asia", false),
+    Filter("Europe", false),
+    Filter("Oceania", false)
 )
 
 private val carSide = listOf(
-    "left",
-    "right"
+    Filter("left", false),
+    Filter("right", false)
 )
 
 private val continent = listOf(
-    "Asia",
-    "Africa",
-    "Europe",
-    "North America",
-    "South America",
-    "Oceania",
-    "Antarctica"
+    Filter("Asia", false),
+    Filter("Africa", false),
+    Filter("Europe", false),
+    Filter("North America", false),
+    Filter("South America", false),
+    Filter("Oceania", false),
+    Filter("Antarctica", false)
 )

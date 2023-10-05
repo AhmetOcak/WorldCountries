@@ -38,12 +38,15 @@ class FilterCountryListFragment : Fragment() {
         val adapter = FilterAdapter()
         binding.rvFilter.apply {
             this.adapter = adapter
+            itemAnimator = null
+            stateListAnimator = null
             layoutManager = LinearLayoutManager(requireContext())
         }
 
         binding.toolbar.setNavigationOnClickListener {
             if (viewModel.uiState.value.isFilterTypeSelected) {
                 viewModel.resetFilterParams()
+                adapter.submitList(listOf())
             } else {
                 findNavController().navigateUp()
             }
@@ -61,6 +64,8 @@ class FilterCountryListFragment : Fragment() {
 
                     if (uiState.filters.isNotEmpty()) {
                         adapter.submitList(uiState.filters)
+                    } else {
+                        adapter.submitList(listOf())
                     }
                 }
             }

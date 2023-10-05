@@ -6,6 +6,10 @@
         <variable
             name="checkbox_text"
             type="String" />
+
+        <variable
+            name="isChecked"
+            type="Boolean" />
     </data>
 
     <FrameLayout
@@ -13,8 +17,10 @@
         android:layout_height="wrap_content">
 
         <CheckBox
+            android:id="@+id/cb_filter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:checked="@{isChecked}"
             android:text="@{checkbox_text}" />
     </FrameLayout>
 </layout>
