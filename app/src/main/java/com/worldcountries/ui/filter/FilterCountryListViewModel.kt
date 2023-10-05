@@ -98,6 +98,15 @@ class FilterCountryListViewModel @Inject constructor() : ViewModel() {
             )
         }
     }
+
+    fun resetFilterData() {
+        carSide.forEach {
+            it.isChecked = false
+        }
+        continent.forEach {
+            it.isChecked = false
+        }
+    }
 }
 
 data class FilterCountryListUiState(
@@ -110,16 +119,16 @@ data class FilterCountryListUiState(
 )
 
 private val carSide = listOf(
-    Filter(6, "left", false),
-    Filter(7, "right", false)
+    Filter(1, "left", false),
+    Filter(2, "right", false)
 )
 
 private val continent = listOf(
-    Filter(8, "Asia", false),
-    Filter(9, "Africa", false),
-    Filter(10, "Europe", false),
-    Filter(11, "North America", false),
-    Filter(12, "South America", false),
-    Filter(13, "Oceania", false),
-    Filter(14, "Antarctica", false)
+    Filter(3, "Asia", false),
+    Filter(4, "Africa", false),
+    Filter(5, "Europe", false),
+    Filter(6, "North America", false),
+    Filter(7, "South America", false),
+    Filter(8, "Oceania", false),
+    Filter(9, "Antarctica", false)
 )

@@ -56,6 +56,12 @@ class FilterCountryListFragment : Fragment() {
                 }
                 else -> {
                     viewModel.clearSelectedFilters()
+                    viewModel.resetFilterData()
+                    val filters = viewModel.uiState.value.appliedFilters.map { it.text }
+                    findNavController().navigate(
+                        FilterCountryListFragmentDirections.
+                        actionFilterCountryListFragmentToHomeFragment(filters.toTypedArray())
+                    )
                 }
             }
         }
