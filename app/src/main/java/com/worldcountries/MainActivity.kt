@@ -2,15 +2,9 @@ package com.worldcountries
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.worldcountries.databinding.ActivityMainBinding
-import com.worldcountries.ui.favorites.FavoritesFragment
-import com.worldcountries.ui.home.HomeFragment
-import com.worldcountries.ui.search.SearchFragment
-import com.worldcountries.ui.settings.SettingsFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
