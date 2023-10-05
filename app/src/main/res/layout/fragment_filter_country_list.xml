@@ -45,23 +45,6 @@
             app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
             <Button
-                android:id="@+id/btn_region"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="0dp"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:paddingVertical="@dimen/three_level_margin"
-                android:text="@string/region"
-                app:cornerRadius="0dp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="?android:attr/listDivider" />
-
-            <Button
                 android:id="@+id/btn_pop"
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="match_parent"

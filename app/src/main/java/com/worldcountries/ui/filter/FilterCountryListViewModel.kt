@@ -11,7 +11,6 @@ import javax.inject.Inject
 
 enum class FilterType {
     NOTHING,
-    REGIONS,
     CAR_SIDE,
     CONTINENT,
     POPULATION
@@ -34,7 +33,6 @@ class FilterCountryListViewModel @Inject constructor() : ViewModel() {
                 filters = when(filterType) {
                     FilterType.CONTINENT -> { continent }
                     FilterType.CAR_SIDE -> { carSide }
-                    FilterType.REGIONS -> { regions }
                     else -> listOf()
                 }
             )
@@ -109,14 +107,6 @@ data class FilterCountryListUiState(
     val filters: List<Filter> = listOf(),
     val selectedFilters: List<Filter> = listOf(),
     val appliedFilters: List<Filter> = listOf()
-)
-
-private val regions = listOf(
-    Filter(1, "Africa", false),
-    Filter(2, "Americas", false),
-    Filter(3, "Asia", false),
-    Filter(4, "Europe", false),
-    Filter(5, "Oceania", false)
 )
 
 private val carSide = listOf(

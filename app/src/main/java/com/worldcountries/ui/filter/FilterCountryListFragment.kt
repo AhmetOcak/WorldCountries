@@ -106,14 +106,6 @@ class FilterCountryListFragment : Fragment() {
             }
         }
 
-        binding.btnRegion.setOnClickListener {
-            viewModel.apply {
-                setFilterTypeSelected()
-                setSelectedFilterType(FilterType.REGIONS)
-                setTitle("Regions")
-            }
-        }
-
         binding.btnTrafficSide.setOnClickListener {
             viewModel.apply {
                 setFilterTypeSelected()
