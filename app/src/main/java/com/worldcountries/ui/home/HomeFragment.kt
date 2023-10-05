@@ -39,6 +39,11 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        findNavController().currentBackStackEntry?.savedStateHandle
+            ?.getLiveData<ArrayList<String>>("filters")?.observe(viewLifecycleOwner) { filters ->
+
+        }
+
         val adapter = CountryListAdapter()
         binding.rvHomeCountryList.apply {
             this.adapter = adapter

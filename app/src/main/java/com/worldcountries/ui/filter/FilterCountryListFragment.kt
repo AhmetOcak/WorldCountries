@@ -58,10 +58,10 @@ class FilterCountryListFragment : Fragment() {
                     viewModel.clearSelectedFilters()
                     viewModel.resetFilterData()
                     val filters = viewModel.uiState.value.appliedFilters.map { it.text }
-                    findNavController().navigate(
-                        FilterCountryListFragmentDirections.
-                        actionFilterCountryListFragmentToHomeFragment(filters.toTypedArray())
-                    )
+                    findNavController().apply {
+                        previousBackStackEntry?.savedStateHandle?.set("filters", filters)
+                        popBackStack()
+                    }
                 }
             }
         }
@@ -71,7 +71,7 @@ class FilterCountryListFragment : Fragment() {
                 viewModel.resetFilterParams()
                 adapter.submitList(listOf())
             } else {
-                findNavController().navigateUp()
+                findNavController().popBackStack()
             }
         }
 
