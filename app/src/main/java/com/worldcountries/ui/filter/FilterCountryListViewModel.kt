@@ -54,34 +54,82 @@ class FilterCountryListViewModel @Inject constructor() : ViewModel() {
             )
         }
     }
+
+    fun onClickFilter(filter: Filter) {
+        val currentFilters = _uiState.value.selectedFilters.toMutableList()
+        val selectedFilter = currentFilters.firstOrNull { it.id == filter.id }
+
+        if (selectedFilter == null) {
+            currentFilters.add(filter)
+            _uiState.update {
+                it.copy(selectedFilters = currentFilters)
+            }
+        } else {
+            currentFilters.remove(selectedFilter)
+            _uiState.update {
+                it.copy(selectedFilters = currentFilters)
+            }
+        }
+    }
+
+    fun clearSelectedFilters() {
+        _uiState.update {
+            it.copy(selectedFilters = listOf())
+        }
+    }
+
+    fun applyFilters() {
+        val appliedFilters = _uiState.value.appliedFilters.toMutableList()
+        val selectedFilters = _uiState.value.selectedFilters
+
+        if (appliedFilters.isEmpty()) {
+            appliedFilters.addAll(selectedFilters)
+        } else {
+            selectedFilters.forEach {
+                if (appliedFilters.contains(it)) {
+                    appliedFilters.remove(it)
+                } else {
+                    appliedFilters.add(it)
+                }
+            }
+        }
+
+        _uiState.update {
+            it.copy(
+                appliedFilters = appliedFilters
+            )
+        }
+    }
 }
 
 data class FilterCountryListUiState(
     val isFilterTypeSelected: Boolean = false,
     val selectedFilterType: FilterType = FilterType.NOTHING,
     val title: String = "Filter",
-    val filters: List<Filter> = listOf()
+    val filters: List<Filter> = listOf(),
+    val selectedFilters: List<Filter> = listOf(),
+    val appliedFilters: List<Filter> = listOf()
 )
 
 private val regions = listOf(
-    Filter("Africa", false),
-    Filter("Americas", false),
-    Filter("Asia", false),
-    Filter("Europe", false),
-    Filter("Oceania", false)
+    Filter(1, "Africa", false),
+    Filter(2, "Americas", false),
+    Filter(3, "Asia", false),
+    Filter(4, "Europe", false),
+    Filter(5, "Oceania", false)
 )
 
 private val carSide = listOf(
-    Filter("left", false),
-    Filter("right", false)
+    Filter(6, "left", false),
+    Filter(7, "right", false)
 )
 
 private val continent = listOf(
-    Filter("Asia", false),
-    Filter("Africa", false),
-    Filter("Europe", false),
-    Filter("North America", false),
-    Filter("South America", false),
-    Filter("Oceania", false),
-    Filter("Antarctica", false)
+    Filter(8, "Asia", false),
+    Filter(9, "Africa", false),
+    Filter(10, "Europe", false),
+    Filter(11, "North America", false),
+    Filter(12, "South America", false),
+    Filter(13, "Oceania", false),
+    Filter(14, "Antarctica", false)
 )

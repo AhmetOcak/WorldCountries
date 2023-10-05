@@ -21,4 +21,6 @@
     <string name="car_side">Car Side</string>
     <string name="continent">Continent</string>
     <string name="apply">Apply</string>
+    <style name="see_the_result">See the result</style>
+    <style name="apply">Apply</style>
 </resources>

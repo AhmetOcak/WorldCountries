@@ -35,12 +35,29 @@ class FilterCountryListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = FilterAdapter()
+        val adapter = FilterAdapter {
+            viewModel.onClickFilter(it)
+        }
         binding.rvFilter.apply {
             this.adapter = adapter
             itemAnimator = null
             stateListAnimator = null
             layoutManager = LinearLayoutManager(requireContext())
+        }
+
+        binding.btnFilter.setOnClickListener {
+            when(viewModel.uiState.value.isFilterTypeSelected) {
+                true -> {
+                    viewModel.apply {
+                        applyFilters()
+                        clearSelectedFilters()
+                        resetFilterParams()
+                    }
+                }
+                else -> {
+                    viewModel.clearSelectedFilters()
+                }
+            }
         }
 
         binding.toolbar.setNavigationOnClickListener {
