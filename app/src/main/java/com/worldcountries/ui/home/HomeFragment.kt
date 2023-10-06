@@ -2,6 +2,7 @@ package com.worldcountries.ui.home
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.worldcountries.R
 import com.worldcountries.design.MarginItemDecoration
 import com.worldcountries.databinding.FragmentHomeBinding
+import com.worldcountries.model.filter.Filter
 import com.worldcountries.ui.home.adapter.CountryListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -40,8 +42,8 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         findNavController().currentBackStackEntry?.savedStateHandle
-            ?.getLiveData<ArrayList<String>>("filters")?.observe(viewLifecycleOwner) { filters ->
-
+            ?.getLiveData<ArrayList<Filter>>("filters")?.observe(viewLifecycleOwner) { filters ->
+                Log.d("filters", filters.toString())
         }
 
         val adapter = CountryListAdapter()

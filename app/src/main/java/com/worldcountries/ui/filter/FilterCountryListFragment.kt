@@ -12,6 +12,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.worldcountries.databinding.FragmentFilterCountryListBinding
+import com.worldcountries.model.filter.FilterType
 import com.worldcountries.ui.filter.adapter.FilterAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -46,7 +47,7 @@ class FilterCountryListFragment : Fragment() {
         }
 
         binding.btnFilter.setOnClickListener {
-            when(viewModel.uiState.value.isFilterTypeSelected) {
+            when (viewModel.uiState.value.isFilterTypeSelected) {
                 true -> {
                     viewModel.apply {
                         applyFilters()
@@ -54,12 +55,15 @@ class FilterCountryListFragment : Fragment() {
                         resetFilterParams()
                     }
                 }
+
                 else -> {
                     viewModel.clearSelectedFilters()
                     viewModel.resetFilterData()
-                    val filters = viewModel.uiState.value.appliedFilters.map { it.text }
                     findNavController().apply {
-                        previousBackStackEntry?.savedStateHandle?.set("filters", filters)
+                        previousBackStackEntry?.savedStateHandle?.set(
+                            "filters",
+                            viewModel.uiState.value.appliedFilters
+                        )
                         popBackStack()
                     }
                 }
