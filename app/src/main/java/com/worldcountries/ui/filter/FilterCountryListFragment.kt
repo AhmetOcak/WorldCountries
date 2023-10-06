@@ -87,6 +87,11 @@ class FilterCountryListFragment : Fragment() {
                     binding.apply {
                         isFilterTypeSelected = uiState.isFilterTypeSelected
                         title = uiState.title
+                        isFilterButtonEnabled = if (!uiState.isFilterTypeSelected) {
+                            uiState.appliedFilters.isNotEmpty()
+                        } else {
+                            true
+                        }
                     }
 
                     if (uiState.filters.isNotEmpty()) {

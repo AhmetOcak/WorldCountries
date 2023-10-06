@@ -2,7 +2,6 @@ package com.worldcountries.ui.home
 
 import android.content.res.Configuration
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -43,7 +42,7 @@ class HomeFragment : Fragment() {
 
         findNavController().currentBackStackEntry?.savedStateHandle
             ?.getLiveData<ArrayList<Filter>>("filters")?.observe(viewLifecycleOwner) { filters ->
-                Log.d("filters", filters.toString())
+                viewModel.filterCountryList(filters)
         }
 
         val adapter = CountryListAdapter()
@@ -66,8 +65,10 @@ class HomeFragment : Fragment() {
                 viewModel.uiState.collect { uiState ->
                     binding.isLoading = uiState.isLoading
 
-                    if (uiState.countryList.isNotEmpty()) {
+                    if (uiState.countryList.isNotEmpty() && !uiState.isListFiltered) {
                         adapter.submitList(uiState.countryList)
+                    } else {
+                        adapter.submitList(uiState.filteredList)
                     }
 
                     if (uiState.errorMessageId != null) {

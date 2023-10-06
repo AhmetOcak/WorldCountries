@@ -5,6 +5,8 @@ import androidx.lifecycle.viewModelScope
 import com.worldcountries.common.Response
 import com.worldcountries.data.repository.WorldCountriesRepository
 import com.worldcountries.model.country.Country
+import com.worldcountries.model.filter.Filter
+import com.worldcountries.model.filter.FilterType
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -52,11 +54,50 @@ class HomeViewModel @Inject constructor(
             }
         }
     }
+
+    fun filterCountryList(filters: ArrayList<Filter>) {
+        val filteredList = mutableListOf<Country>()
+        val currentList = _uiState.value.countryList
+
+        _uiState.update {
+            it.copy(isListFiltered = true)
+        }
+
+        filters.forEach { filter ->
+            when (filter.filterType) {
+                FilterType.CAR_SIDE -> {
+                    filteredList.addAll(
+                        currentList.filter {
+                            it.car?.side == filter.text
+                        }
+                    )
+                }
+
+                FilterType.CONTINENT -> {
+                    filteredList.addAll(
+                        currentList.filter {
+                            it.continents.any { continent ->
+                                continent == filter.text
+                            }
+                        }
+                    )
+                }
+
+                else -> {}
+            }
+        }
+
+        _uiState.update {
+            it.copy(filteredList = filteredList)
+        }
+    }
 }
 
 data class HomeUiState(
     val isLoading: Boolean = false,
     val isError: Boolean = false,
     val errorMessageId: Int? = null,
-    val countryList: List<Country> = listOf()
+    val countryList: List<Country> = listOf(),
+    val filteredList: List<Country> = listOf(),
+    val isListFiltered: Boolean = false
 )

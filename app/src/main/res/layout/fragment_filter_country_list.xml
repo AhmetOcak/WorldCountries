@@ -15,6 +15,10 @@
         <variable
             name="isFilterTypeSelected"
             type="Boolean" />
+
+        <variable
+            name="isFilterButtonEnabled"
+            type="Boolean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -116,6 +120,7 @@
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:paddingVertical="@dimen/two_level_margin"
+            android:enabled="@{isFilterButtonEnabled}"
             android:text="@{isFilterTypeSelected ? @string/apply : @string/see_the_results}"
             android:contentDescription="@{isFilterTypeSelected ? @string/apply : @string/see_the_results }"
             app:cornerRadius="8dp"
