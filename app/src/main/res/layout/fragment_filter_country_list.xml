@@ -17,6 +17,10 @@
             type="Boolean" />
 
         <variable
+            name="isPopFilterTypeSelected"
+            type="Boolean" />
+
+        <variable
             name="isFilterButtonEnabled"
             type="Boolean" />
     </data>
@@ -46,7 +50,8 @@
             app:layout_constraintBottom_toTopOf="@+id/btn_filter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            tools:visibility="gone">
 
             <Button
                 android:id="@+id/btn_pop"
@@ -105,11 +110,55 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="@dimen/one_level_margin"
-            android:visibility="@{isFilterTypeSelected ? View.VISIBLE : View.GONE}"
+            android:visibility="@{isFilterTypeSelected &amp; !isPopFilterTypeSelected ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toTopOf="@+id/btn_filter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            tools:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/two_level_margin"
+            android:layout_marginTop="@dimen/one_level_margin"
+            android:orientation="horizontal"
+            android:visibility="@{isFilterTypeSelected &amp; isPopFilterTypeSelected ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tf_min_pop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/min"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Space
+                android:layout_width="2dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tf_max_pop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/max"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
 
         <Button
             android:id="@+id/btn_filter"
@@ -117,12 +166,12 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/one_level_margin"
             android:layout_marginBottom="@dimen/one_level_margin"
+            android:contentDescription="@string/filter_apply_btn_descr"
+            android:enabled="@{isFilterButtonEnabled}"
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:paddingVertical="@dimen/two_level_margin"
-            android:enabled="@{isFilterButtonEnabled}"
             android:text="@{isFilterTypeSelected ? @string/apply : @string/see_the_results}"
-            android:contentDescription="@{isFilterTypeSelected ? @string/apply : @string/see_the_results }"
             app:cornerRadius="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

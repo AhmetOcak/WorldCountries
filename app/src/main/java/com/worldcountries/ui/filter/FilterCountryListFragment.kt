@@ -50,6 +50,10 @@ class FilterCountryListFragment : Fragment() {
             when (viewModel.uiState.value.isFilterTypeSelected) {
                 true -> {
                     viewModel.apply {
+                        applyPopFilters(
+                            binding.tfMinPop.text.toString(),
+                            binding.tfMaxPop.text.toString()
+                        )
                         applyFilters()
                         clearSelectedFilters()
                         resetFilterParams()
@@ -86,6 +90,7 @@ class FilterCountryListFragment : Fragment() {
                 viewModel.uiState.collect { uiState ->
                     binding.apply {
                         isFilterTypeSelected = uiState.isFilterTypeSelected
+                        isPopFilterTypeSelected = uiState.isPopFilterSelected
                         title = uiState.title
                         isFilterButtonEnabled = if (!uiState.isFilterTypeSelected) {
                             uiState.appliedFilters.isNotEmpty()

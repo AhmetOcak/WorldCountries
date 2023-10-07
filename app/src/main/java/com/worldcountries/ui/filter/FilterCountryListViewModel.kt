@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 
 
-
 @HiltViewModel
 class FilterCountryListViewModel @Inject constructor() : ViewModel() {
 
@@ -26,9 +25,16 @@ class FilterCountryListViewModel @Inject constructor() : ViewModel() {
         _uiState.update {
             it.copy(
                 selectedFilterType = filterType,
-                filters = when(filterType) {
-                    FilterType.CONTINENT -> { continent }
-                    FilterType.CAR_SIDE -> { carSide }
+                isPopFilterSelected = filterType == FilterType.POPULATION,
+                filters = when (filterType) {
+                    FilterType.CONTINENT -> {
+                        continent
+                    }
+
+                    FilterType.CAR_SIDE -> {
+                        carSide
+                    }
+
                     else -> listOf()
                 }
             )
@@ -95,6 +101,35 @@ class FilterCountryListViewModel @Inject constructor() : ViewModel() {
         }
     }
 
+    fun applyPopFilters(min: String, max: String) {
+        if (min != "" && max != "" && min.toInt() != 0 && max.toInt() != 0) {
+            val appliedFilters = _uiState.value.appliedFilters.toMutableList()
+
+            if (min.toInt() > max.toInt()) {
+                appliedFilters.add(
+                    Filter(
+                        id = 10,
+                        text = "$max-$min",
+                        filterType = FilterType.POPULATION
+                    )
+                )
+            } else {
+                appliedFilters.add(
+                    Filter(
+                        id = 10,
+                        text = "$min-$max",
+                        filterType = FilterType.POPULATION
+                    )
+                )
+
+            }
+
+            _uiState.update {
+                it.copy(appliedFilters = appliedFilters)
+            }
+        }
+    }
+
     fun resetFilterData() {
         carSide.forEach {
             it.isChecked = false
@@ -107,6 +142,7 @@ class FilterCountryListViewModel @Inject constructor() : ViewModel() {
 
 data class FilterCountryListUiState(
     val isFilterTypeSelected: Boolean = false,
+    val isPopFilterSelected: Boolean = false,
     val selectedFilterType: FilterType = FilterType.NOTHING,
     val title: String = "Filter",
     val filters: List<Filter> = listOf(),

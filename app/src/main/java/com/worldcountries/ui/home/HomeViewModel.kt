@@ -66,24 +66,56 @@ class HomeViewModel @Inject constructor(
         filters.forEach { filter ->
             when (filter.filterType) {
                 FilterType.CAR_SIDE -> {
-                    filteredList.addAll(
-                        currentList.filter {
-                            it.car?.side == filter.text
+                    if (filteredList.isNotEmpty()) {
+                        filteredList.removeIf {
+                            it.car?.side != filter.text
                         }
-                    )
+                    } else {
+                        filteredList.addAll(
+                            currentList.filter {
+                                it.car?.side == filter.text
+                            }
+                        )
+                    }
                 }
 
                 FilterType.CONTINENT -> {
-                    filteredList.addAll(
-                        currentList.filter {
+                    if (filteredList.isNotEmpty()) {
+                        filteredList.removeIf {
                             it.continents.any { continent ->
-                                continent == filter.text
+                                continent != filter.text
                             }
                         }
-                    )
+                    } else {
+                        filteredList.addAll(
+                            currentList.filter {
+                                it.continents.any { continent ->
+                                    continent == filter.text
+                                }
+                            }
+                        )
+                    }
                 }
 
-                else -> {}
+                else -> {
+                    val str = filter.text.split('-')
+
+                    if (filteredList.isNotEmpty()) {
+                        filteredList.removeIf {
+                            (it.population ?: 0) < str.first().toInt()
+                                    &&
+                                    (it.population ?: 0) > str.last().toInt()
+                        }
+                    } else {
+                        filteredList.addAll(
+                            currentList.filter {
+                                (it.population ?: 0) >= str.first().toInt()
+                                        &&
+                                        (it.population ?: 0) <= str.last().toInt()
+                            }
+                        )
+                    }
+                }
             }
         }
 
