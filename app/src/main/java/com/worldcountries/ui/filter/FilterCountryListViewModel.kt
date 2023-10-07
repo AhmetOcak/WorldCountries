@@ -151,8 +151,8 @@ data class FilterCountryListUiState(
 )
 
 private val carSide = listOf(
-    Filter(1, "left", false, FilterType.CAR_SIDE),
-    Filter(2, "right", false, FilterType.CAR_SIDE)
+    Filter(1, "Left", false, FilterType.CAR_SIDE),
+    Filter(2, "Right", false, FilterType.CAR_SIDE)
 )
 
 private val continent = listOf(

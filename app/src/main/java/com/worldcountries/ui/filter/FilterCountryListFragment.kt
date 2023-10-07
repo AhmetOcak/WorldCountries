@@ -92,6 +92,10 @@ class FilterCountryListFragment : Fragment() {
                         isFilterTypeSelected = uiState.isFilterTypeSelected
                         isPopFilterTypeSelected = uiState.isPopFilterSelected
                         title = uiState.title
+                        selectedFilters =
+                            uiState.appliedFilters.map { it.text }.toString()
+                                .replace('[', ' ')
+                                .replace(']', ' ')
                         isFilterButtonEnabled = if (!uiState.isFilterTypeSelected) {
                             uiState.appliedFilters.isNotEmpty()
                         } else {

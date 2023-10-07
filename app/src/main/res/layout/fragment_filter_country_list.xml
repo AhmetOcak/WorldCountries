@@ -23,6 +23,10 @@
         <variable
             name="isFilterButtonEnabled"
             type="Boolean" />
+
+        <variable
+            name="selectedFilters"
+            type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -51,7 +55,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            tools:visibility="gone">
+            tools:visibility="visible">
 
             <Button
                 android:id="@+id/btn_pop"
@@ -103,6 +107,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="?android:attr/listDivider" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/two_level_margin"
+                android:layout_marginHorizontal="@dimen/two_level_margin"
+                android:text="@{@string/selected_filters(selectedFilters)}" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -126,7 +137,8 @@
             android:visibility="@{isFilterTypeSelected &amp; isPopFilterTypeSelected ? View.VISIBLE : View.GONE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            tools:visibility="gone">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="0dp"

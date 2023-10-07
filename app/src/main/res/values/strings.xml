@@ -25,6 +25,7 @@
     <string name="min">Min</string>
     <string name="max">Max</string>
     <string name="filter_apply_btn_descr">apply process</string>
+    <string name="selected_filters">Selected Filters: %s</string>
 
     <style name="see_the_result">See the result</style>
     <style name="apply">Apply</style>

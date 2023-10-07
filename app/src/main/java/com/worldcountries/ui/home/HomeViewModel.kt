@@ -14,6 +14,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
@@ -68,12 +69,12 @@ class HomeViewModel @Inject constructor(
                 FilterType.CAR_SIDE -> {
                     if (filteredList.isNotEmpty()) {
                         filteredList.removeIf {
-                            it.car?.side != filter.text
+                            it.car?.side != filter.text.lowercase(Locale.getDefault())
                         }
                     } else {
                         filteredList.addAll(
                             currentList.filter {
-                                it.car?.side == filter.text
+                                it.car?.side == filter.text.lowercase(Locale.getDefault())
                             }
                         )
                     }
