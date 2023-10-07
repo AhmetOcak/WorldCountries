@@ -26,7 +26,7 @@
     <string name="max">Max</string>
     <string name="filter_apply_btn_descr">apply process</string>
     <string name="selected_filters">Selected Filters: %s</string>
-
+    <string name="no_filter_data">It seems the country you are looking for is not on this planet.</string>
     <style name="see_the_result">See the result</style>
     <style name="apply">Apply</style>
 </resources>

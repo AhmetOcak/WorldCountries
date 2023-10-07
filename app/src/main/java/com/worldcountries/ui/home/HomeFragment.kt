@@ -63,7 +63,10 @@ class HomeFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect { uiState ->
-                    binding.isLoading = uiState.isLoading
+                    binding.apply {
+                        isLoading = uiState.isLoading
+                        isFilteredListEmpty = uiState.isFilteredListEmpty
+                    }
 
                     if (uiState.countryList.isNotEmpty() && !uiState.isListFiltered) {
                         adapter.submitList(uiState.countryList)

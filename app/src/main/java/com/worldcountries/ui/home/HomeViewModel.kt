@@ -121,7 +121,10 @@ class HomeViewModel @Inject constructor(
         }
 
         _uiState.update {
-            it.copy(filteredList = filteredList)
+            it.copy(
+                filteredList = filteredList,
+                isFilteredListEmpty = filteredList.isEmpty()
+            )
         }
     }
 }
@@ -129,6 +132,7 @@ class HomeViewModel @Inject constructor(
 data class HomeUiState(
     val isLoading: Boolean = false,
     val isError: Boolean = false,
+    val isFilteredListEmpty: Boolean = false,
     val errorMessageId: Int? = null,
     val countryList: List<Country> = listOf(),
     val filteredList: List<Country> = listOf(),
