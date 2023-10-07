@@ -81,21 +81,13 @@ class HomeViewModel @Inject constructor(
                 }
 
                 FilterType.CONTINENT -> {
-                    if (filteredList.isNotEmpty()) {
-                        filteredList.removeIf {
+                    filteredList.addAll(
+                        currentList.filter {
                             it.continents.any { continent ->
-                                continent != filter.text
+                                continent == filter.text
                             }
                         }
-                    } else {
-                        filteredList.addAll(
-                            currentList.filter {
-                                it.continents.any { continent ->
-                                    continent == filter.text
-                                }
-                            }
-                        )
-                    }
+                    )
                 }
 
                 else -> {
