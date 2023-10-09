@@ -35,7 +35,17 @@
     <string name="radio_btn_default">Default</string>
     <string name="find_your_country">Find your country</string>
     <string name="country">Country</string>
+    <string name="common_name">Common name:</string>
+    <string name="official_name">Official name:</string>
+    <string name="capital">Capital:</string>
+    <string name="alt_spellings">Alt spellings:</string>
+    <string name="overview_region">Region:</string>
+    <string name="subregion">Subregion:</string>
+    <string name="overview_pop">Population:</string>
+    <string name="landlocked">Landlocked:</string>
+    <string name="timezone">Timezone:</string>
 
     <style name="see_the_result">See the result</style>
+
     <style name="apply">Apply</style>
 </resources>
