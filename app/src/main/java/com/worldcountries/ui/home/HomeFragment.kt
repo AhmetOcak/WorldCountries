@@ -106,6 +106,12 @@ class HomeFragment : Fragment() {
         dialog.setContentView(dialogBinding.root)
 
         dialogBinding.apply {
+            when(viewModel.uiState.value.sortType) {
+                SortType.DEFAULT -> rbtnDefault.isChecked = true
+                SortType.HIGHEST_POP -> rbtnHighestPop.isChecked = true
+                SortType.LOWEST_POP -> rbtnLowestPop.isChecked = true
+            }
+
             rbtnDefault.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) {
                     isAnyRadioBtnSelected = true
@@ -139,5 +145,6 @@ class HomeFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+        _dialogBinding = null
     }
 }
