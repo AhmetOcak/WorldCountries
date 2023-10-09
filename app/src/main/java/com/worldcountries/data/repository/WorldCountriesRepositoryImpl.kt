@@ -12,4 +12,8 @@ class WorldCountriesRepositoryImpl @Inject constructor(
     override suspend fun getAllCountries(): Response<List<Country>> {
         return worldCountriesRemoteDataSource.getAllCountries()
     }
+
+    override suspend fun getCountryByName(name: String): Response<List<Country>> {
+        return worldCountriesRemoteDataSource.getCountryByName(name)
+    }
 }

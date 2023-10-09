@@ -5,18 +5,83 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.GridLayoutManager
 import com.worldcountries.R
+import com.worldcountries.common.getGridSpan
+import com.worldcountries.databinding.FragmentSearchBinding
+import com.worldcountries.design.MarginItemDecoration
+import com.worldcountries.ui.adapter.CountryListAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class SearchFragment : Fragment() {
 
+    private var _binding: FragmentSearchBinding? = null
+    private val binding: FragmentSearchBinding get() = _binding!!
+
+    private val viewModel: SearchViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false)
+    ): View {
+        _binding = FragmentSearchBinding.inflate(layoutInflater)
+        return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val adapter = CountryListAdapter()
+        binding.rvSearch.apply {
+            this.adapter = adapter
+            layoutManager = GridLayoutManager(context, getGridSpan(context))
+            addItemDecoration(MarginItemDecoration(resources.getDimensionPixelSize(R.dimen.two_level_margin)))
+        }
+
+        binding.tfSearch.setOnEditorActionListener { _, _, _ ->
+            searchCountry()
+            return@setOnEditorActionListener true
+        }
+
+        binding.tilSearch.setEndIconOnClickListener {
+            searchCountry()
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.collect { uiState ->
+                    binding.apply {
+                        isLoading = uiState.isLoading
+                        isSearchEmpty = uiState.isSearchResultEmpty
+                    }
+
+                    adapter.submitList(uiState.resultList)
+                }
+            }
+        }
+    }
+
+    private fun searchCountry() {
+        val searchText = binding.tfSearch.text.toString()
+        if (searchText.isBlank()) {
+            binding.tilSearch.apply {
+                isErrorEnabled = true
+                error = "Please fill out this field."
+            }
+        } else {
+            binding.tilSearch.isErrorEnabled = false
+            viewModel.getCountryByName(searchText)
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }

@@ -33,6 +33,8 @@
     <string name="apply_sort">Apply</string>
     <string name="cancel_sort">Cancel</string>
     <string name="radio_btn_default">Default</string>
+    <string name="find_your_country">Find your country</string>
+    <string name="country">Country</string>
 
     <style name="see_the_result">See the result</style>
     <style name="apply">Apply</style>

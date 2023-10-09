@@ -12,4 +12,7 @@ class WorldCountriesRemoteDataSourceImp @Inject constructor(
 
     override suspend fun getAllCountries(): Response<List<Country>> =
         apiCall { worldCountriesApi.getAllCountries() }
+
+    override suspend fun getCountryByName(name: String): Response<List<Country>> =
+        apiCall { worldCountriesApi.getCountryByName(name) }
 }
