@@ -1,6 +1,5 @@
 package com.worldcountries.ui.home
 
-import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.worldcountries.R
+import com.worldcountries.common.getGridSpan
 import com.worldcountries.design.MarginItemDecoration
 import com.worldcountries.databinding.FragmentHomeBinding
 import com.worldcountries.databinding.SortBottomSheetLayoutBinding
@@ -53,7 +53,7 @@ class HomeFragment : Fragment() {
         val adapter = CountryListAdapter()
         binding.rvHomeCountryList.apply {
             this.adapter = adapter
-            layoutManager = GridLayoutManager(context, getGridSpan())
+            layoutManager = GridLayoutManager(context, getGridSpan(requireContext()))
             addItemDecoration(
                 MarginItemDecoration(resources.getDimensionPixelSize(R.dimen.two_level_margin))
             )
@@ -94,9 +94,6 @@ class HomeFragment : Fragment() {
             }
         }
     }
-
-    private fun getGridSpan() =
-        if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) 2 else 3
 
     private fun showSortDialog() {
         val dialog = BottomSheetDialog(requireContext())
