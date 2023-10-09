@@ -135,6 +135,7 @@ class HomeFragment : Fragment() {
 
             btnHomeApplySort.setOnClickListener {
                 viewModel.sortCountryList()
+                binding.rvHomeCountryList.smoothScrollToPosition(0)
                 dialog.dismiss()
             }
         }
