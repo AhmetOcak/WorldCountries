@@ -17,6 +17,12 @@ import kotlinx.coroutines.launch
 import java.util.Locale
 import javax.inject.Inject
 
+enum class SortType {
+    DEFAULT,
+    LOWEST_POP,
+    HIGHEST_POP
+}
+
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val repository: WorldCountriesRepository
@@ -59,10 +65,6 @@ class HomeViewModel @Inject constructor(
     fun filterCountryList(filters: ArrayList<Filter>) {
         val filteredList = mutableListOf<Country>()
         val currentList = _uiState.value.countryList
-
-        _uiState.update {
-            it.copy(isListFiltered = true)
-        }
 
         filters.forEach { filter ->
             when (filter.filterType) {
@@ -119,6 +121,47 @@ class HomeViewModel @Inject constructor(
             )
         }
     }
+
+    fun setSortType(sortType: SortType) {
+        _uiState.update {
+            it.copy(sortType = sortType)
+        }
+    }
+
+    fun sortCountryList() {
+        val isListFiltered = _uiState.value.filteredList.isNotEmpty()
+        val currentList = if (isListFiltered) {
+            _uiState.value.filteredList
+        } else {
+            _uiState.value.countryList
+        }
+
+        when (_uiState.value.sortType) {
+            SortType.DEFAULT -> {
+                if (isListFiltered) {
+                    _uiState.update {
+                        it.copy(filteredList = currentList, sortedList = listOf())
+                    }
+                } else {
+                    _uiState.update {
+                        it.copy(countryList = currentList, sortedList = listOf())
+                    }
+                }
+            }
+
+            SortType.HIGHEST_POP -> {
+                _uiState.update { state ->
+                    state.copy(sortedList = currentList.sortedByDescending { it.population })
+                }
+            }
+
+            SortType.LOWEST_POP -> {
+                _uiState.update { state ->
+                    state.copy(sortedList = currentList.sortedBy { it.population })
+                }
+            }
+        }
+    }
 }
 
 data class HomeUiState(
@@ -126,7 +169,8 @@ data class HomeUiState(
     val isError: Boolean = false,
     val isFilteredListEmpty: Boolean = false,
     val errorMessageId: Int? = null,
+    val sortType: SortType = SortType.DEFAULT,
     val countryList: List<Country> = listOf(),
     val filteredList: List<Country> = listOf(),
-    val isListFiltered: Boolean = false
+    val sortedList: List<Country> = listOf()
 )

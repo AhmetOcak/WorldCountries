@@ -13,9 +13,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.worldcountries.R
 import com.worldcountries.design.MarginItemDecoration
 import com.worldcountries.databinding.FragmentHomeBinding
+import com.worldcountries.databinding.SortBottomSheetLayoutBinding
 import com.worldcountries.model.filter.Filter
 import com.worldcountries.ui.home.adapter.CountryListAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,6 +28,9 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding: FragmentHomeBinding get() = _binding!!
+
+    private var _dialogBinding: SortBottomSheetLayoutBinding? = null
+    private val dialogBinding: SortBottomSheetLayoutBinding get() = _dialogBinding!!
 
     private val viewModel: HomeViewModel by viewModels()
 
@@ -43,7 +48,7 @@ class HomeFragment : Fragment() {
         findNavController().currentBackStackEntry?.savedStateHandle
             ?.getLiveData<ArrayList<Filter>>("filters")?.observe(viewLifecycleOwner) { filters ->
                 viewModel.filterCountryList(filters)
-        }
+            }
 
         val adapter = CountryListAdapter()
         binding.rvHomeCountryList.apply {
@@ -60,6 +65,10 @@ class HomeFragment : Fragment() {
             )
         }
 
+        binding.btnHomeSort.setOnClickListener {
+            showSortDialog()
+        }
+
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect { uiState ->
@@ -68,10 +77,12 @@ class HomeFragment : Fragment() {
                         isFilteredListEmpty = uiState.isFilteredListEmpty
                     }
 
-                    if (uiState.countryList.isNotEmpty() && !uiState.isListFiltered) {
-                        adapter.submitList(uiState.countryList)
-                    } else {
+                    if (uiState.sortedList.isNotEmpty()) {
+                        adapter.submitList(uiState.sortedList)
+                    } else if (uiState.filteredList.isNotEmpty()) {
                         adapter.submitList(uiState.filteredList)
+                    } else {
+                        adapter.submitList(uiState.countryList)
                     }
 
                     if (uiState.errorMessageId != null) {
@@ -88,6 +99,42 @@ class HomeFragment : Fragment() {
 
     private fun getGridSpan() =
         if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) 2 else 3
+
+    private fun showSortDialog() {
+        val dialog = BottomSheetDialog(requireContext())
+        _dialogBinding = SortBottomSheetLayoutBinding.inflate(layoutInflater)
+        dialog.setContentView(dialogBinding.root)
+
+        dialogBinding.apply {
+            rbtnDefault.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    isAnyRadioBtnSelected = true
+                    viewModel.setSortType(SortType.DEFAULT)
+                }
+            }
+
+            rbtnHighestPop.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    isAnyRadioBtnSelected = true
+                    viewModel.setSortType(SortType.HIGHEST_POP)
+                }
+            }
+
+            rbtnLowestPop.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    isAnyRadioBtnSelected = true
+                    viewModel.setSortType(SortType.LOWEST_POP)
+                }
+            }
+
+            btnHomeApplySort.setOnClickListener {
+                viewModel.sortCountryList()
+                dialog.dismiss()
+            }
+        }
+
+        dialog.show()
+    }
 
     override fun onDestroy() {
         super.onDestroy()
