@@ -6,11 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebViewClient
 import com.worldcountries.databinding.FragmentMapBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MapFragment : Fragment() {
+class MapFragment(private val mapUrl: String?) : Fragment() {
 
     private var _binding: FragmentMapBinding? = null
     private val binding: FragmentMapBinding get() = _binding!!
@@ -28,6 +29,9 @@ class MapFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val settings = binding.wvMap.settings
         settings.javaScriptEnabled = true
+
+        binding.wvMap.webViewClient = WebViewClient()
+        mapUrl?.let { binding.wvMap.loadUrl(it) }
     }
 
     override fun onDestroy() {

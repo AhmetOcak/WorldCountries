@@ -20,7 +20,7 @@ class CountryFragmentAdapter(
         return when (position) {
             0 -> OverviewFragment(countryData)
             1 -> DetailFragment()
-            else -> MapFragment()
+            else -> MapFragment(countryData.maps?.googleMaps)
         }
     }
 }
