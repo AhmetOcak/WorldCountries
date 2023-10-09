@@ -66,6 +66,10 @@ class HomeViewModel @Inject constructor(
         val filteredList = mutableListOf<Country>()
         val currentList = _uiState.value.countryList
 
+        _uiState.update {
+            it.copy(isListFiltered = true)
+        }
+
         filters.forEach { filter ->
             when (filter.filterType) {
                 FilterType.CAR_SIDE -> {
@@ -180,6 +184,7 @@ data class HomeUiState(
     val isLoading: Boolean = false,
     val isError: Boolean = false,
     val isFilteredListEmpty: Boolean = false,
+    val isListFiltered: Boolean = false,
     val errorMessageId: Int? = null,
     val sortType: SortType = SortType.NOTHING,
     val countryList: List<Country> = listOf(),

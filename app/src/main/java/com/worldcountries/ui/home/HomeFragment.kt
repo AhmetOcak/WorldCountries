@@ -77,7 +77,7 @@ class HomeFragment : Fragment() {
                         isFilteredListEmpty = uiState.isFilteredListEmpty
                     }
 
-                    if (uiState.filteredList.isNotEmpty()) {
+                    if (uiState.isListFiltered) {
                         adapter.submitList(uiState.filteredList)
                     } else {
                         adapter.submitList(uiState.countryList)
