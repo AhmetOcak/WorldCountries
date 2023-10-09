@@ -7,6 +7,6 @@ data class Currencies(
 )
 
 data class Currency(
-    @SerializedName("name") var name: String? = null,
-    @SerializedName("symbol") var symbol: String? = null
+    @SerializedName("name") val name: String? = null,
+    @SerializedName("symbol") val symbol: String? = null
 )
