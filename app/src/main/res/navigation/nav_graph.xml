@@ -13,9 +13,9 @@
         <action
             android:id="@+id/action_homeFragment_to_filterCountryListFragment"
             app:destination="@id/filterCountryListFragment" />
-        <argument
-            android:name="filters"
-            app:argType="string[]" />
+        <action
+            android:id="@+id/action_homeFragment_to_countryFragment"
+            app:destination="@id/countryFragment" />
     </fragment>
     <fragment
         android:id="@+id/filterCountryListFragment"
@@ -31,10 +31,23 @@
         android:id="@+id/searchFragment"
         android:name="com.worldcountries.ui.search.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_countryFragment"
+            app:destination="@id/countryFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.worldcountries.ui.settings.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/countryFragment"
+        android:name="com.worldcountries.ui.country.CountryFragment"
+        android:label="fragment_country"
+        tools:layout="@layout/fragment_country" >
+        <argument
+            android:name="countryData"
+            app:argType="com.worldcountries.model.country.Country" />
+    </fragment>
 </navigation>

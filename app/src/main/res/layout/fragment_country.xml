@@ -4,6 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.country.CountryFragment">
 
+    <data>
+
+        <variable
+            name="flag"
+            type="String" />
+
+        <variable
+            name="officialName"
+            type="String" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -14,6 +25,7 @@
             android:layout_height="0dp"
             android:importantForAccessibility="no"
             android:scaleType="fitXY"
+            app:imageUrl="@{flag}"
             app:layout_constraintDimensionRatio="3:2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +40,7 @@
             android:layout_marginTop="@dimen/one_level_margin"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="Federal Republic of Germany"
+            android:text="@{officialName}"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,20 +58,21 @@
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Overview" />
+                android:text="@string/overview_tab" />
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Detail" />
+                android:text="@string/detail_tab" />
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Maps" />
+                android:text="@string/maps_tab" />
         </com.google.android.material.tabs.TabLayout>
 
         <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_country"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"

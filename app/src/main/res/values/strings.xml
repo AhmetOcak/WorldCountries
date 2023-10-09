@@ -44,6 +44,9 @@
     <string name="overview_pop">Population:</string>
     <string name="landlocked">Landlocked:</string>
     <string name="timezone">Timezone:</string>
+    <string name="overview_tab">Overview</string>
+    <string name="detail_tab">Detail</string>
+    <string name="maps_tab">Maps</string>
 
     <style name="see_the_result">See the result</style>
 

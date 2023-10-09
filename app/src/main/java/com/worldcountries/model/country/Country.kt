@@ -1,7 +1,10 @@
 package com.worldcountries.model.country
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Country(
     @SerializedName("name") val name: Name? = Name(),
     @SerializedName("independent") val independent: Boolean? = null,
@@ -12,7 +15,6 @@ data class Country(
     @SerializedName("subregion") val subregion: String? = null,
     @SerializedName("latlng") val latlng: ArrayList<Double> = arrayListOf(),
     @SerializedName("landlocked") val landlocked: Boolean? = null,
-    @SerializedName("flag") val flag: String? = null,
     @SerializedName("maps") val maps: Maps? = Maps(),
     @SerializedName("population") val population: Int? = null,
     @SerializedName("car") val car: Car? = Car(),
@@ -24,4 +26,4 @@ data class Country(
     @SerializedName("postalCode") val postalCode: PostalCode? = PostalCode(),
     @SerializedName("borders") val borders: ArrayList<String> = arrayListOf(),
     @SerializedName("area") val area: Double? = null
-)
+) : Parcelable

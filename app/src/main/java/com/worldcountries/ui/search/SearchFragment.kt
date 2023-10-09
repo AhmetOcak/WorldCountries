@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.worldcountries.R
 import com.worldcountries.common.getGridSpan
@@ -37,7 +38,7 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = CountryListAdapter()
+        val adapter = CountryListAdapter(findNavController(), false)
         binding.rvSearch.apply {
             this.adapter = adapter
             layoutManager = GridLayoutManager(context, getGridSpan(context))

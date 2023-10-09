@@ -50,7 +50,7 @@ class HomeFragment : Fragment() {
                 viewModel.filterCountryList(filters)
             }
 
-        val adapter = CountryListAdapter()
+        val adapter = CountryListAdapter(findNavController(), true)
         binding.rvHomeCountryList.apply {
             this.adapter = adapter
             layoutManager = GridLayoutManager(context, getGridSpan(requireContext()))
