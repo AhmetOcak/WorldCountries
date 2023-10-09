@@ -6,6 +6,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="commonName"
             type="String" />
@@ -71,6 +73,7 @@
                 android:layout_marginTop="@dimen/one_level_margin"
                 android:importantForAccessibility="no"
                 android:scaleType="fitXY"
+                android:visibility="@{coatOfArms != null ? View.VISIBLE : View.GONE}"
                 app:imageUrl="@{coatOfArms}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -300,6 +303,7 @@
                 android:layout_height="0dp"
                 android:layout_marginStart="@dimen/one_level_margin"
                 android:importantForAccessibility="no"
+                android:visibility="@{meaningOfFlag != null ? View.VISIBLE : View.GONE}"
                 app:imageUrl="@{flag}"
                 app:layout_constraintDimensionRatio="3:2"
                 app:layout_constraintStart_toStartOf="parent"

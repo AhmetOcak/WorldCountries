@@ -6,11 +6,15 @@ import coil.load
 import com.google.android.material.imageview.ShapeableImageView
 
 @BindingAdapter("imageUrl")
-fun loadImage(view: ImageView, url: String) {
-    view.load(url)
+fun loadImage(view: ImageView, url: String?) {
+    if (url != null) {
+        view.load(url)
+    }
 }
 
 @BindingAdapter("imageUrl")
-fun loadImage(view: ShapeableImageView, url: String) {
-    view.load(url)
+fun loadImage(view: ShapeableImageView, url: String?) {
+    if (url != null) {
+        view.load(url)
+    }
 }
