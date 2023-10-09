@@ -35,7 +35,7 @@ class OverviewFragment(private val countryData: Country) : Fragment() {
                 .replace(']', ' ')
             region = countryData.region
             subregion = countryData.subregion
-            population = countryData.population.toString()
+            population = String.format("%,d", countryData.population)
             landlocked = countryData.landlocked.toString()
             timezone = countryData.timezones.first()
             meaningOfFlag = countryData.flags?.alt
