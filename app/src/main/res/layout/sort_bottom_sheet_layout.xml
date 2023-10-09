@@ -24,12 +24,6 @@
             app:layout_constraintTop_toBottomOf="@+id/cl_sort_bottom_sheet">
 
             <RadioButton
-                android:id="@+id/rbtn_default"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/radio_btn_default" />
-
-            <RadioButton
                 android:id="@+id/rbtn_lowest_pop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

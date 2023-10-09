@@ -18,7 +18,7 @@ import java.util.Locale
 import javax.inject.Inject
 
 enum class SortType {
-    DEFAULT,
+    NOTHING,
     LOWEST_POP,
     HIGHEST_POP
 }
@@ -137,27 +137,39 @@ class HomeViewModel @Inject constructor(
         }
 
         when (_uiState.value.sortType) {
-            SortType.DEFAULT -> {
+            SortType.NOTHING -> {
                 if (isListFiltered) {
                     _uiState.update {
-                        it.copy(filteredList = currentList, sortedList = listOf())
+                        it.copy(filteredList = currentList)
                     }
                 } else {
                     _uiState.update {
-                        it.copy(countryList = currentList, sortedList = listOf())
+                        it.copy(countryList = currentList)
                     }
                 }
             }
 
             SortType.HIGHEST_POP -> {
-                _uiState.update { state ->
-                    state.copy(sortedList = currentList.sortedByDescending { it.population })
+                if (isListFiltered) {
+                    _uiState.update { state ->
+                        state.copy(filteredList = currentList.sortedByDescending { it.population })
+                    }
+                } else {
+                    _uiState.update { state ->
+                        state.copy(countryList = currentList.sortedByDescending { it.population })
+                    }
                 }
             }
 
             SortType.LOWEST_POP -> {
-                _uiState.update { state ->
-                    state.copy(sortedList = currentList.sortedBy { it.population })
+                if (isListFiltered) {
+                    _uiState.update { state ->
+                        state.copy(filteredList = currentList.sortedBy { it.population })
+                    }
+                } else {
+                    _uiState.update { state ->
+                        state.copy(countryList = currentList.sortedBy { it.population })
+                    }
                 }
             }
         }
@@ -169,8 +181,7 @@ data class HomeUiState(
     val isError: Boolean = false,
     val isFilteredListEmpty: Boolean = false,
     val errorMessageId: Int? = null,
-    val sortType: SortType = SortType.DEFAULT,
+    val sortType: SortType = SortType.NOTHING,
     val countryList: List<Country> = listOf(),
-    val filteredList: List<Country> = listOf(),
-    val sortedList: List<Country> = listOf()
+    val filteredList: List<Country> = listOf()
 )

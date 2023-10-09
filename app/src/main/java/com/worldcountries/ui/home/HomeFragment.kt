@@ -77,9 +77,7 @@ class HomeFragment : Fragment() {
                         isFilteredListEmpty = uiState.isFilteredListEmpty
                     }
 
-                    if (uiState.sortedList.isNotEmpty()) {
-                        adapter.submitList(uiState.sortedList)
-                    } else if (uiState.filteredList.isNotEmpty()) {
+                    if (uiState.filteredList.isNotEmpty()) {
                         adapter.submitList(uiState.filteredList)
                     } else {
                         adapter.submitList(uiState.countryList)
@@ -106,17 +104,10 @@ class HomeFragment : Fragment() {
         dialog.setContentView(dialogBinding.root)
 
         dialogBinding.apply {
-            when(viewModel.uiState.value.sortType) {
-                SortType.DEFAULT -> rbtnDefault.isChecked = true
+            when (viewModel.uiState.value.sortType) {
                 SortType.HIGHEST_POP -> rbtnHighestPop.isChecked = true
                 SortType.LOWEST_POP -> rbtnLowestPop.isChecked = true
-            }
-
-            rbtnDefault.setOnCheckedChangeListener { _, isChecked ->
-                if (isChecked) {
-                    isAnyRadioBtnSelected = true
-                    viewModel.setSortType(SortType.DEFAULT)
-                }
+                else -> {}
             }
 
             rbtnHighestPop.setOnCheckedChangeListener { _, isChecked ->
@@ -134,9 +125,13 @@ class HomeFragment : Fragment() {
             }
 
             btnHomeApplySort.setOnClickListener {
-                viewModel.sortCountryList()
-                binding.rvHomeCountryList.smoothScrollToPosition(0)
-                dialog.dismiss()
+                if (dialogBinding.isAnyRadioBtnSelected == true) {
+                    viewModel.sortCountryList()
+                    binding.rvHomeCountryList.smoothScrollToPosition(0)
+                    dialog.dismiss()
+                } else {
+                    dialog.dismiss()
+                }
             }
         }
 
