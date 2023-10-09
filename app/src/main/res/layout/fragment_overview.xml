@@ -66,7 +66,6 @@
             android:layout_marginStart="@dimen/one_level_margin"
             android:layout_marginTop="@dimen/one_level_margin"
             android:importantForAccessibility="no"
-            android:src="@tools:sample/avatars"
             app:imageUrl="@{coatOfArms}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -288,7 +287,6 @@
             android:layout_marginStart="@dimen/one_level_margin"
             android:layout_marginTop="@dimen/one_level_margin"
             android:importantForAccessibility="no"
-            android:src="@tools:sample/avatars"
             app:imageUrl="@{flag}"
             app:layout_constraintDimensionRatio="3:2"
             app:layout_constraintStart_toStartOf="parent"
