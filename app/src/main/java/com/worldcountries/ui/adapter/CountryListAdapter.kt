@@ -1,4 +1,4 @@
-package com.worldcountries.ui.home.adapter
+package com.worldcountries.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

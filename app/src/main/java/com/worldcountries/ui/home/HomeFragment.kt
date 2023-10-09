@@ -19,7 +19,7 @@ import com.worldcountries.design.MarginItemDecoration
 import com.worldcountries.databinding.FragmentHomeBinding
 import com.worldcountries.databinding.SortBottomSheetLayoutBinding
 import com.worldcountries.model.filter.Filter
-import com.worldcountries.ui.home.adapter.CountryListAdapter
+import com.worldcountries.ui.adapter.CountryListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
