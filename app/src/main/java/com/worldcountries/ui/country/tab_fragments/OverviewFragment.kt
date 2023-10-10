@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.worldcountries.R
+import com.worldcountries.common.modifyText
 import com.worldcountries.databinding.FragmentOverviewBinding
 import com.worldcountries.model.country.Country
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,21 +29,61 @@ class OverviewFragment(private val countryData: Country) : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
-            commonName = countryData.name?.common
-            officialName = countryData.name?.official
-            capital = countryData.capital.first()
-            altSpellings = countryData.altSpellings.toString()
-                .replace('[', ' ')
-                .replace(']', ' ')
-            region = countryData.region
-            subregion = countryData.subregion
-            population = String.format("%,d", countryData.population)
-            landlocked = countryData.landlocked.toString()
-            timezone = countryData.timezones.first()
             meaningOfFlag = countryData.flags?.alt
             flag = countryData.flags?.png
             coatOfArms = countryData.coatOfArms?.png
+
+            setTextData()
         }
+    }
+
+    private fun FragmentOverviewBinding.setTextData() {
+        tvCommonName.text = modifyText(
+            getString(R.string.overview_common_name),
+            countryData.name?.common
+        )
+
+        tvOfficialName.text = modifyText(
+            getString(R.string.overview_official_name),
+            countryData.name?.official
+        )
+
+        tvCapital.text = modifyText(
+            getString(R.string.overview_capital),
+            countryData.capital.first()
+        )
+
+        tvRegion.text = modifyText(
+            getString(R.string.region),
+            countryData.region
+        )
+
+        tvSubregion.text = modifyText(
+            getString(R.string.overview_subregion),
+            countryData.subregion
+        )
+
+        tvPop.text = modifyText(
+            getString(R.string.overview_overview_pop),
+            String.format("%,d", countryData.population)
+        )
+
+        tvLandlocked.text = modifyText(
+            getString(R.string.overview_landlocked),
+            countryData.landlocked.toString()
+        )
+
+        tvTimezone.text = modifyText(
+            getString(R.string.overview_timezone),
+            countryData.timezones.first()
+        )
+
+        tvAltSpellings.text = modifyText(
+            getString(R.string.overview_alt_spellings),
+            countryData.altSpellings.toString()
+                .replace('[', ' ')
+                .replace(']', ' ')
+        )
     }
 
     override fun onDestroy() {
