@@ -82,5 +82,7 @@ dependencies {
     val coroutineTestVersion = "1.6.4"
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutineTestVersion")
 
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+
     implementation("io.coil-kt:coil:2.4.0")
 }
