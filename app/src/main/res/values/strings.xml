@@ -35,18 +35,31 @@
     <string name="radio_btn_default">Default</string>
     <string name="find_your_country">Find your country</string>
     <string name="country">Country</string>
-    <string name="common_name">Common name:</string>
-    <string name="official_name">Official name:</string>
-    <string name="capital">Capital:</string>
-    <string name="alt_spellings">Alt spellings:</string>
-    <string name="overview_region">Region:</string>
-    <string name="subregion">Subregion:</string>
-    <string name="overview_pop">Population:</string>
-    <string name="landlocked">Landlocked:</string>
-    <string name="timezone">Timezone:</string>
+
     <string name="overview_tab">Overview</string>
     <string name="detail_tab">Detail</string>
     <string name="maps_tab">Maps</string>
+    <string name="geography">Geography</string>
+
+    <string name="overview_common_name">Common name:</string>
+    <string name="overview_official_name">Official name:</string>
+    <string name="overview_capital">Capital:</string>
+    <string name="overview_alt_spellings">Alt spellings:</string>
+    <string name="overview_region">Region:</string>
+    <string name="overview_subregion">Subregion:</string>
+    <string name="overview_overview_pop">Population:</string>
+    <string name="overview_landlocked">Landlocked:</string>
+    <string name="overview_timezone">Timezone:</string>
+
+    <string name="detail_location">"<b>"Location: </b></string>
+    <string name="detail_map_reference">Map reference:</string>
+    <string name="detail_coastline">Coastline:</string>
+    <string name="detail_climate">Climate:</string>
+    <string name="detail_terrain">Terrain:</string>
+    <string name="detail_population_distribution">Population distribution:</string>
+    <string name="detail_natural_resources">Natural resources:</string>
+    <string name="detail_people">People</string>
+    <string name="detail_nationality">Nationality:</string>
 
     <style name="see_the_result">See the result</style>
 
