@@ -1,5 +1,7 @@
 package com.worldcountries.di
 
+import com.worldcountries.data.local.datasource.CountriesDetailsLocalDataSource
+import com.worldcountries.data.local.datasource.CountriesDetailsLocalDataSourceImpl
 import com.worldcountries.data.remote.api.WorldCountriesApi
 import com.worldcountries.data.remote.datasource.WorldCountriesRemoteDataSource
 import com.worldcountries.data.remote.datasource.WorldCountriesRemoteDataSourceImp
@@ -19,5 +21,11 @@ object DataSourceModule {
         worldCountriesApi: WorldCountriesApi
     ): WorldCountriesRemoteDataSource {
         return WorldCountriesRemoteDataSourceImp(worldCountriesApi)
+    }
+
+    @Singleton
+    @Provides
+    fun provideCountriesDetailsDataSource(): CountriesDetailsLocalDataSource {
+        return CountriesDetailsLocalDataSourceImpl()
     }
 }

@@ -1,5 +1,6 @@
 package com.worldcountries.di
 
+import com.worldcountries.data.local.datasource.CountriesDetailsLocalDataSource
 import com.worldcountries.data.remote.datasource.WorldCountriesRemoteDataSource
 import com.worldcountries.data.repository.WorldCountriesRepository
 import com.worldcountries.data.repository.WorldCountriesRepositoryImpl
@@ -16,8 +17,9 @@ object RepositoryModule {
     @Singleton
     @Provides
     fun provideWorldCountriesRepository(
-        remoteDataSource: WorldCountriesRemoteDataSource
+        remoteDataSource: WorldCountriesRemoteDataSource,
+        localDataSource: CountriesDetailsLocalDataSource
     ): WorldCountriesRepository {
-        return WorldCountriesRepositoryImpl(remoteDataSource)
+        return WorldCountriesRepositoryImpl(remoteDataSource, localDataSource)
     }
 }
