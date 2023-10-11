@@ -36,7 +36,6 @@
                 android:layout_marginStart="@dimen/one_level_margin"
                 android:layout_marginTop="@dimen/one_level_margin"
                 android:importantForAccessibility="no"
-                android:scaleType="fitXY"
                 android:visibility="@{coatOfArms != null ? View.VISIBLE : View.GONE}"
                 app:imageUrl="@{coatOfArms}"
                 app:layout_constraintStart_toStartOf="parent"

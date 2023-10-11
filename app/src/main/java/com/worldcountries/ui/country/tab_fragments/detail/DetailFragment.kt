@@ -130,7 +130,9 @@ class DetailFragment(private val countryName: String?) : Fragment() {
             }
         }
         if (entries.isNotEmpty()) {
-            entries.add(PieEntry(otherReligionPercent, "other"))
+            if (otherReligionPercent > 0f) {
+                entries.add(PieEntry(otherReligionPercent, "other"))
+            }
 
             val dataSet = PieDataSet(entries, data?.date ?: "")
             dataSet.colors = getChartColors(requireContext())
@@ -161,7 +163,9 @@ class DetailFragment(private val countryName: String?) : Fragment() {
             }
         }
         if (entries.isNotEmpty()) {
-            entries.add(PieEntry(otherEthnicityPercent, "other"))
+            if (otherEthnicityPercent > 0f) {
+                entries.add(PieEntry(otherEthnicityPercent, "other"))
+            }
 
             val dataSet = PieDataSet(entries, "")
             dataSet.colors = getChartColors(requireContext())
