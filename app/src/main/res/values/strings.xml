@@ -60,6 +60,8 @@
     <string name="detail_natural_resources">Natural resources:</string>
     <string name="detail_people">People</string>
     <string name="detail_nationality">Nationality:</string>
+    <string name="detail_religion_label">Religion</string>
+    <string name="detail_pop_label">Population</string>
 
     <style name="see_the_result">See the result</style>
 
