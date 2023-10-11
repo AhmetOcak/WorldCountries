@@ -54,4 +54,12 @@
     <color name="dark_on_surface_variant">#d3c4b4</color>
     <color name="dark_outline">#817567</color>
     <color name="dark_inverse_primary">#ffb951</color>
+
+    <!-- Chart Colors -->
+    <color name="chart_light_blue">#8CEBFF</color>
+    <color name="chart_light_green">#C5FF8C</color>
+    <color name="chart_light_yellow">#FFF78C</color>
+    <color name="chart_light_brown">#FFD28C</color>
+    <color name="chart_light_red">#ff6361</color>
+    <color name="chart_light_purple">#bc5090</color>
 </resources>
