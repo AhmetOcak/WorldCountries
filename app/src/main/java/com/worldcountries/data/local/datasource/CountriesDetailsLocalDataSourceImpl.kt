@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 class CountriesDetailsLocalDataSourceImpl @Inject constructor() : CountriesDetailsLocalDataSource {
 
-    override fun readCountryDetailJson(
+    override suspend fun readCountryDetailJson(
         applicationContext: Context,
         countryName: String
     ): Details? {

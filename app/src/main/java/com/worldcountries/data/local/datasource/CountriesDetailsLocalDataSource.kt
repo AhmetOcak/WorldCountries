@@ -5,7 +5,7 @@ import com.worldcountries.model.country_detail.Details
 
 interface CountriesDetailsLocalDataSource {
 
-    fun readCountryDetailJson(
+    suspend fun readCountryDetailJson(
         applicationContext: Context,
         countryName: String
     ): Details?
