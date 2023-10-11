@@ -61,7 +61,7 @@ class DetailFragment(private val countryName: String?) : Fragment() {
                         isPopAgeDataEmpty = popAgeEntries.isEmpty()
                     }
 
-                    if (uiState.countryData != null) {
+                    if (uiState.countryData != null && !uiState.isChartsDrew) {
                         setEthnicityChart(
                             uiState.countryData.people?.ethnicGroups?.ethnicity,
                             ethnicityEntries
@@ -70,6 +70,7 @@ class DetailFragment(private val countryName: String?) : Fragment() {
                         setPopAgeChart(uiState.countryData.people?.ageStructure, popAgeEntries)
                         setPopGenderChart(uiState.countryData.people?.ageStructure, popGenderEntries)
                         setTextData(uiState.countryData)
+                        viewModel.setCharsDrew()
                     }
                 }
             }
@@ -94,9 +95,9 @@ class DetailFragment(private val countryName: String?) : Fragment() {
         val pieData = PieData(dataSet)
         binding.apply {
             pcPopGenderChart.data = pieData
-            pcPopGenderChart.invalidate()
             pcPopGenderChart.description.text = "Gender"
             pcPopGenderChart.description.typeface = Typeface.DEFAULT_BOLD
+            pcPopGenderChart.invalidate()
         }
     }
 
@@ -114,9 +115,9 @@ class DetailFragment(private val countryName: String?) : Fragment() {
         binding.apply {
             isPopAgeDataEmpty = false
             pcPopAgeChart.data = pieData
-            pcPopAgeChart.invalidate()
             pcPopAgeChart.description.text = "Age Structure"
             pcPopAgeChart.description.typeface = Typeface.DEFAULT_BOLD
+            pcPopAgeChart.invalidate()
         }
     }
 
@@ -141,9 +142,9 @@ class DetailFragment(private val countryName: String?) : Fragment() {
             binding.apply {
                 isReligionDataEmpty = false
                 pcReligionChart.data = pieData
-                pcReligionChart.invalidate()
                 pcReligionChart.description.text = "Religions"
                 pcReligionChart.description.typeface = Typeface.DEFAULT_BOLD
+                pcReligionChart.invalidate()
             }
         } else {
             binding.isReligionDataEmpty = true
@@ -174,9 +175,9 @@ class DetailFragment(private val countryName: String?) : Fragment() {
             binding.apply {
                 isEthnicityDataEmpty = false
                 pcEthnicityChart.data = pieData
-                pcEthnicityChart.invalidate()
                 pcEthnicityChart.description.text = "Ethnic Groups"
                 pcEthnicityChart.description.typeface = Typeface.DEFAULT_BOLD
+                pcEthnicityChart.invalidate()
             }
         } else {
             binding.isEthnicityDataEmpty = true

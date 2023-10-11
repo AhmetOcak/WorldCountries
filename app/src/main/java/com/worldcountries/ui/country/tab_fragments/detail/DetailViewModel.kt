@@ -41,10 +41,17 @@ class DetailViewModel @Inject constructor(
             }
         }
     }
+
+    fun setCharsDrew() {
+        _uiState.update {
+            it.copy(isChartsDrew = true)
+        }
+    }
 }
 
 data class DetailUiState(
     val isLoading: Boolean = false,
     val isError: Boolean = false,
+    val isChartsDrew: Boolean = false,
     val countryData: Data? = null
 )
