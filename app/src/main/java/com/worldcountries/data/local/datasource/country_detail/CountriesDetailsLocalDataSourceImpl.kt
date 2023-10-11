@@ -1,4 +1,4 @@
-package com.worldcountries.data.local.datasource
+package com.worldcountries.data.local.datasource.country_detail
 
 import android.content.Context
 import com.google.gson.Gson
