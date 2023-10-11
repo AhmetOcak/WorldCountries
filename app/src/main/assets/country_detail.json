@@ -39872,12 +39872,12 @@
                         "religion": [
                             {
                                 "name": "Muslim",
-                                "percent": 99.8,
+                                "percent": 99.0,
                                 "note": "mostly Sunni"
                             },
                             {
                                 "name": "other",
-                                "percent": 0.2,
+                                "percent": 1.0,
                                 "note": "mostly Christians and Jews"
                             }
                         ]
