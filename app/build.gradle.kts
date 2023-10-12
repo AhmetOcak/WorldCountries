@@ -9,12 +9,12 @@ plugins {
 
 android {
     namespace = "com.worldcountries"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.worldcountries"
         minSdk = 26
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -61,7 +61,7 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
     implementation("com.squareup.okhttp3:okhttp:4.10.0")
 
-    val roomVersion = "2.5.2"
+    val roomVersion = "2.6.0-alpha02"
     implementation("androidx.room:room-runtime:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
     kapt("androidx.room:room-compiler:$roomVersion")
