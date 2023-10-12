@@ -62,6 +62,7 @@
     <string name="detail_nationality">Nationality:</string>
     <string name="detail_religion_label">Religion</string>
     <string name="detail_pop_label">Population</string>
+    <string name="add_favorite_country">add favorite country</string>
 
     <style name="see_the_result">See the result</style>
 
