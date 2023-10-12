@@ -5,10 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
 import com.worldcountries.databinding.FragmentCountryBinding
+import com.worldcountries.model.favorite_country.FavoriteCountryEntity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 private val tabsArray = arrayOf(
     "Overview",
@@ -19,10 +26,12 @@ private val tabsArray = arrayOf(
 @AndroidEntryPoint
 class CountryFragment : Fragment() {
 
-    private var _binding : FragmentCountryBinding? = null
-    private val binding : FragmentCountryBinding get() = _binding!!
+    private var _binding: FragmentCountryBinding? = null
+    private val binding: FragmentCountryBinding get() = _binding!!
 
     private val args: CountryFragmentArgs by navArgs()
+
+    private val viewModel: CountryViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +47,13 @@ class CountryFragment : Fragment() {
         binding.apply {
             flag = args.countryData.flags?.png
             officialName = args.countryData.name?.official
+            ivAddFavCountry.setOnClickListener {
+
+                viewModel.addOrRemoveFavoriteCountry(
+                    args.countryData.name?.common ?: "",
+                    mapCountryDataToEntity()
+                )
+            }
         }
 
         val adapter = CountryFragmentAdapter(this, args.countryData)
@@ -46,6 +62,58 @@ class CountryFragment : Fragment() {
         TabLayoutMediator(binding.tlCountry, binding.vpCountry) { tab, position ->
             tab.text = tabsArray[position]
         }.attach()
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.collect { uiState ->
+
+                    if (uiState.isError) {
+                        showToastMessage("Something went wrong !!")
+                        viewModel.consumeEvent()
+                    }
+
+                    if (uiState.isSucceed) {
+                        when(uiState.isOperationAddOrRemove) {
+                            DatabaseOp.ADD -> {
+                                showToastMessage("Country successfully added to favorites.")
+                            }
+                            DatabaseOp.DELETE -> {
+                                showToastMessage("Country successfully removed from favorites.")
+                            }
+                            else -> {}
+                        }
+                        viewModel.consumeEvent()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun mapCountryDataToEntity(): FavoriteCountryEntity {
+        val data = args.countryData
+        return FavoriteCountryEntity(
+            commonName = data.name?.common ?: "",
+            officialName = data.name?.official ?: "",
+            capital = data.capital.first(),
+            population = data.population.toString(),
+            timezone = data.timezones.first(),
+            altSpellings = data.altSpellings.toString(),
+            flagDescription = data.flags?.alt ?: "",
+            coatOfArms = data.coatOfArms?.png ?: "",
+            flagImgUrl = data.flags?.png ?: "",
+            landlocked = data.landlocked ?: false,
+            region = data.region ?: "",
+            subRegion = data.subregion ?: "",
+            mapUrl = data.maps?.googleMaps ?: ""
+        )
+    }
+
+    private fun showToastMessage(message: String) {
+        Toast.makeText(
+            context,
+            message,
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     override fun onDestroy() {
