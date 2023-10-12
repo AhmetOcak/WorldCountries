@@ -39,4 +39,8 @@ class WorldCountriesRepositoryImpl @Inject constructor(
     override suspend fun getAllFavoriteCountries(): List<FavoriteCountryEntity> {
         return favoriteCountriesLocalDataSource.getAllFavoriteCountries()
     }
+
+    override suspend fun getFavoriteCountry(countryName: String): FavoriteCountryEntity? {
+        return favoriteCountriesLocalDataSource.getFavoriteCountry(countryName)
+    }
 }

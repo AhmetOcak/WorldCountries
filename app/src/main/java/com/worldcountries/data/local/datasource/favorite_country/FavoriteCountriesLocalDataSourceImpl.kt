@@ -15,4 +15,7 @@ class FavoriteCountriesLocalDataSourceImpl @Inject constructor(
 
     override suspend fun getAllFavoriteCountries(): List<FavoriteCountryEntity> =
         dao.getAllFavoriteCountries()
+
+    override suspend fun getFavoriteCountry(countryName: String): FavoriteCountryEntity? =
+        dao.getFavoriteCountry(countryName)
 }

@@ -9,4 +9,6 @@ interface FavoriteCountriesLocalDataSource {
     suspend fun deleteFavoriteCountry(favoriteCountryEntity: FavoriteCountryEntity)
 
     suspend fun getAllFavoriteCountries(): List<FavoriteCountryEntity>
+
+    suspend fun getFavoriteCountry(countryName: String): FavoriteCountryEntity?
 }

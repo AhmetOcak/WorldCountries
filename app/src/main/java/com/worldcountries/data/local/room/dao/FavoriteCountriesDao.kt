@@ -10,11 +10,14 @@ import com.worldcountries.model.favorite_country.FavoriteCountryEntity
 interface FavoriteCountriesDao {
 
     @Insert
-    fun addFavoriteCountry(favoriteCountryEntity: FavoriteCountryEntity)
+    suspend fun addFavoriteCountry(favoriteCountryEntity: FavoriteCountryEntity)
 
     @Delete
-    fun deleteFavoriteCountry(favoriteCountryEntity: FavoriteCountryEntity)
+    suspend fun deleteFavoriteCountry(favoriteCountryEntity: FavoriteCountryEntity)
 
     @Query("SELECT * FROM favorite_country")
     suspend fun getAllFavoriteCountries(): List<FavoriteCountryEntity>
+
+    @Query("SELECT * FROM favorite_country WHERE common_name == :favoriteCountryName")
+    suspend fun getFavoriteCountry(favoriteCountryName: String): FavoriteCountryEntity?
 }
