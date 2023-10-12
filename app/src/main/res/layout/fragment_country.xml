@@ -82,8 +82,8 @@
 
         <ImageView
             android:id="@+id/iv_add_fav_country"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/one_level_margin"
             android:clickable="true"
             android:contentDescription="@string/add_favorite_country"
