@@ -5,6 +5,7 @@ import com.worldcountries.common.Response
 import com.worldcountries.model.country.Country
 import com.worldcountries.model.country_detail.Details
 import com.worldcountries.model.favorite_country.FavoriteCountryEntity
+import kotlinx.coroutines.flow.Flow
 
 interface WorldCountriesRepository {
 
@@ -18,7 +19,7 @@ interface WorldCountriesRepository {
 
     suspend fun deleteFavoriteCountry(favoriteCountryEntity: FavoriteCountryEntity)
 
-    suspend fun getAllFavoriteCountries(): List<FavoriteCountryEntity>
+    suspend fun getAllFavoriteCountries(): Flow<List<FavoriteCountryEntity>>
 
     suspend fun getFavoriteCountry(countryName: String): FavoriteCountryEntity?
 }

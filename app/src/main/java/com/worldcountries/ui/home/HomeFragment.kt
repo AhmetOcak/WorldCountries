@@ -20,6 +20,7 @@ import com.worldcountries.databinding.FragmentHomeBinding
 import com.worldcountries.databinding.SortBottomSheetLayoutBinding
 import com.worldcountries.model.filter.Filter
 import com.worldcountries.ui.adapter.CountryListAdapter
+import com.worldcountries.ui.adapter.Screen
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -50,7 +51,7 @@ class HomeFragment : Fragment() {
                 viewModel.filterCountryList(filters)
             }
 
-        val adapter = CountryListAdapter(findNavController(), true)
+        val adapter = CountryListAdapter(findNavController(), Screen.HOME)
         binding.rvHomeCountryList.apply {
             this.adapter = adapter
             layoutManager = GridLayoutManager(context, getGridSpan(requireContext()))

@@ -2,6 +2,7 @@ package com.worldcountries.data.local.datasource.favorite_country
 
 import com.worldcountries.data.local.room.dao.FavoriteCountriesDao
 import com.worldcountries.model.favorite_country.FavoriteCountryEntity
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class FavoriteCountriesLocalDataSourceImpl @Inject constructor(
@@ -13,7 +14,7 @@ class FavoriteCountriesLocalDataSourceImpl @Inject constructor(
     override suspend fun deleteFavoriteCountry(favoriteCountryEntity: FavoriteCountryEntity) =
         dao.deleteFavoriteCountry(favoriteCountryEntity)
 
-    override suspend fun getAllFavoriteCountries(): List<FavoriteCountryEntity> =
+    override suspend fun getAllFavoriteCountries(): Flow<List<FavoriteCountryEntity>> =
         dao.getAllFavoriteCountries()
 
     override suspend fun getFavoriteCountry(countryName: String): FavoriteCountryEntity? =

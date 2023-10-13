@@ -16,6 +16,7 @@ import com.worldcountries.common.getGridSpan
 import com.worldcountries.databinding.FragmentSearchBinding
 import com.worldcountries.design.MarginItemDecoration
 import com.worldcountries.ui.adapter.CountryListAdapter
+import com.worldcountries.ui.adapter.Screen
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -38,7 +39,7 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = CountryListAdapter(findNavController(), false)
+        val adapter = CountryListAdapter(findNavController(), Screen.SEARCH)
         binding.rvSearch.apply {
             this.adapter = adapter
             layoutManager = GridLayoutManager(context, getGridSpan(context))

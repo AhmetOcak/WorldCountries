@@ -8,6 +8,7 @@ import com.worldcountries.data.remote.datasource.WorldCountriesRemoteDataSource
 import com.worldcountries.model.country.Country
 import com.worldcountries.model.country_detail.Details
 import com.worldcountries.model.favorite_country.FavoriteCountryEntity
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class WorldCountriesRepositoryImpl @Inject constructor(
@@ -36,7 +37,7 @@ class WorldCountriesRepositoryImpl @Inject constructor(
         favoriteCountriesLocalDataSource.deleteFavoriteCountry(favoriteCountryEntity)
     }
 
-    override suspend fun getAllFavoriteCountries(): List<FavoriteCountryEntity> {
+    override suspend fun getAllFavoriteCountries(): Flow<List<FavoriteCountryEntity>> {
         return favoriteCountriesLocalDataSource.getAllFavoriteCountries()
     }
 
