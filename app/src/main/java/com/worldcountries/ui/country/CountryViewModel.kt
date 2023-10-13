@@ -1,8 +1,10 @@
 package com.worldcountries.ui.country
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.worldcountries.data.repository.WorldCountriesRepository
+import com.worldcountries.model.country.Country
 import com.worldcountries.model.favorite_country.FavoriteCountryEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -21,29 +23,59 @@ enum class DatabaseOp {
 
 @HiltViewModel
 class CountryViewModel @Inject constructor(
-    private val repository: WorldCountriesRepository
+    private val repository: WorldCountriesRepository,
+    savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(CountryUiState())
     val uiState: StateFlow<CountryUiState> = _uiState.asStateFlow()
 
-    fun addOrRemoveFavoriteCountry(
-        countryCommonName: String,
-        favoriteCountryEntity: FavoriteCountryEntity
-    ) {
+    private var countryName: String? = null
+
+    init {
+        countryName = savedStateHandle.get<Country>("countryData")?.name?.common
+        countryName?.let { isCountryFavorite(it) }
+    }
+
+    fun addOrRemoveFavoriteCountry(favoriteCountryEntity: FavoriteCountryEntity) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val favCountry = repository.getFavoriteCountry(countryCommonName)
+                val favCountry = countryName?.let { repository.getFavoriteCountry(it) }
                 if (favCountry == null) {
                     repository.addFavoriteCountry(favoriteCountryEntity)
-                    _uiState.update { it.copy(isOperationAddOrRemove = DatabaseOp.ADD) }
+                    _uiState.update {
+                        it.copy(
+                            isOperationAddOrRemove = DatabaseOp.ADD,
+                            isCountryFavorite = true
+                        )
+                    }
                 } else {
                     repository.deleteFavoriteCountry(favCountry)
-                    _uiState.update { it.copy(isOperationAddOrRemove = DatabaseOp.DELETE) }
+                    _uiState.update {
+                        it.copy(
+                            isOperationAddOrRemove = DatabaseOp.DELETE,
+                            isCountryFavorite = false
+                        )
+                    }
                 }
                 _uiState.update { it.copy(isSucceed = true) }
             } catch (e: Exception) {
-                _uiState.update { it.copy(isSucceed = false) }
+                _uiState.update { it.copy(isError = true) }
+            }
+        }
+    }
+
+    private fun isCountryFavorite(countryCommonName: String) {
+        viewModelScope.launch {
+            try {
+                val favCountry = repository.getFavoriteCountry(countryCommonName)
+                if (favCountry == null) {
+                    _uiState.update { it.copy(isCountryFavorite = false) }
+                } else {
+                    _uiState.update { it.copy(isCountryFavorite = true) }
+                }
+            } catch (e: Exception) {
+                _uiState.update { it.copy(isError = true) }
             }
         }
     }
@@ -62,5 +94,6 @@ class CountryViewModel @Inject constructor(
 data class CountryUiState(
     val isSucceed: Boolean = false,
     val isError: Boolean = false,
+    val isCountryFavorite: Boolean = false,
     val isOperationAddOrRemove: DatabaseOp = DatabaseOp.NOTHING
 )

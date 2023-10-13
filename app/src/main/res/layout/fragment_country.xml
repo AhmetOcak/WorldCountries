@@ -20,7 +20,7 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imageView"
+            android:id="@+id/iv_country_big_flag"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:importantForAccessibility="no"
@@ -44,7 +44,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintEnd_toStartOf="@+id/iv_add_fav_country"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/iv_country_big_flag" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tl_country"
@@ -87,7 +87,7 @@
             android:layout_marginEnd="@dimen/one_level_margin"
             android:clickable="true"
             android:contentDescription="@string/add_favorite_country"
-            android:src="@drawable/baseline_favorite_border"
+            android:src="@drawable/ic_fav_filled"
             app:layout_constraintBottom_toBottomOf="@+id/country_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/country_name" />

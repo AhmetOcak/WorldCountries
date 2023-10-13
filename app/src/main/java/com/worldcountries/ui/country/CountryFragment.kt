@@ -1,17 +1,20 @@
 package com.worldcountries.ui.country
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
+import com.worldcountries.R
 import com.worldcountries.databinding.FragmentCountryBinding
 import com.worldcountries.model.favorite_country.FavoriteCountryEntity
 import dagger.hilt.android.AndroidEntryPoint
@@ -49,10 +52,7 @@ class CountryFragment : Fragment() {
             officialName = args.countryData.name?.official
             ivAddFavCountry.setOnClickListener {
 
-                viewModel.addOrRemoveFavoriteCountry(
-                    args.countryData.name?.common ?: "",
-                    mapCountryDataToEntity()
-                )
+                viewModel.addOrRemoveFavoriteCountry(mapCountryDataToEntity())
             }
         }
 
@@ -67,19 +67,42 @@ class CountryFragment : Fragment() {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect { uiState ->
 
+                    if (uiState.isCountryFavorite) {
+                        binding.ivAddFavCountry.setImageDrawable(
+                            ResourcesCompat.getDrawable(
+                                resources,
+                                R.drawable.ic_fav_filled,
+                                null
+                            )
+                        )
+                    } else {
+                        binding.ivAddFavCountry.apply {
+                            setImageDrawable(
+                                ResourcesCompat.getDrawable(
+                                    resources,
+                                    R.drawable.baseline_favorite_border,
+                                    null
+                                )
+                            )
+                            setColorFilter(Color.RED)
+                        }
+                    }
+
                     if (uiState.isError) {
                         showToastMessage("Something went wrong !!")
                         viewModel.consumeEvent()
                     }
 
                     if (uiState.isSucceed) {
-                        when(uiState.isOperationAddOrRemove) {
+                        when (uiState.isOperationAddOrRemove) {
                             DatabaseOp.ADD -> {
                                 showToastMessage("Country successfully added to favorites.")
                             }
+
                             DatabaseOp.DELETE -> {
                                 showToastMessage("Country successfully removed from favorites.")
                             }
+
                             else -> {}
                         }
                         viewModel.consumeEvent()
