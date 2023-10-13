@@ -75,6 +75,8 @@ class HomeFragment : Fragment() {
                 viewModel.uiState.collect { uiState ->
                     binding.apply {
                         isLoading = uiState.isLoading
+                        isError = uiState.isError
+                        errorMessage = uiState.errorMessageId?.let { getString(it) }
                         isFilteredListEmpty = uiState.isFilteredListEmpty
                     }
 
@@ -82,14 +84,6 @@ class HomeFragment : Fragment() {
                         adapter.submitList(uiState.filteredList)
                     } else {
                         adapter.submitList(uiState.countryList)
-                    }
-
-                    if (uiState.errorMessageId != null) {
-                        Toast.makeText(
-                            context,
-                            getString(uiState.errorMessageId),
-                            Toast.LENGTH_LONG
-                        ).show()
                     }
                 }
             }
