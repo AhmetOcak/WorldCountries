@@ -60,6 +60,8 @@ class SearchFragment : Fragment() {
                 viewModel.uiState.collect { uiState ->
                     binding.apply {
                         isLoading = uiState.isLoading
+                        isError = uiState.isError
+                        errorMessage = uiState.errorMessageId?.let { getString(it) }
                         isSearchEmpty = uiState.isSearchResultEmpty
                     }
 

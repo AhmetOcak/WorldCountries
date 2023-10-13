@@ -32,6 +32,7 @@ class SearchViewModel @Inject constructor(
                         it.copy(
                             isLoading = false,
                             resultList = response.data,
+                            isError = false,
                             isSearchResultEmpty = false
                         )
                     }
@@ -42,6 +43,7 @@ class SearchViewModel @Inject constructor(
                         it.copy(
                             isLoading = false,
                             isError = true,
+                            errorMessageId = response.messageId,
                             resultList = listOf(),
                             isSearchResultEmpty = R.string.unknown == response.messageId
                         )
@@ -55,6 +57,7 @@ class SearchViewModel @Inject constructor(
 data class SearchUiState(
     val isLoading: Boolean = false,
     val isError: Boolean = false,
+    val errorMessageId: Int? = null,
     val isSearchResultEmpty: Boolean = false,
     val resultList: List<Country> = listOf()
 )
