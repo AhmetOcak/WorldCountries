@@ -257,7 +257,7 @@
                         "religion": [
                             {
                                 "name": "Muslim",
-                                "percent": 99.7,
+                                "percent": 99.0,
                                 "breakdown": [
                                     {
                                         "name": "Sunni",
@@ -271,7 +271,7 @@
                             },
                             {
                                 "name": "other",
-                                "percent": 0.3
+                                "percent": 1.0
                             }
                         ],
                         "date": "2009"
