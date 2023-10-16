@@ -65,6 +65,7 @@
     <string name="add_favorite_country">add favorite country</string>
     <string name="my_favorite_countries">My favorite countries</string>
     <string name="it_seems_you_don_t_have_favorite_country">It seems you don\'t have favorite country 😥</string>
+    <string name="our_world_title">Our World</string>
 
     <style name="see_the_result">See the result</style>
 

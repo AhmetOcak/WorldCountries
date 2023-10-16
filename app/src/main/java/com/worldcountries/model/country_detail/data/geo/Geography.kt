@@ -3,6 +3,7 @@ package com.worldcountries.model.country_detail.data.geo
 import com.google.gson.annotations.SerializedName
 
 data class Geography(
+    @SerializedName("overview") val overview: String? = null,
     @SerializedName("location") val location: String? = null,
     @SerializedName("map_references") val mapReferences: String? = null,
     @SerializedName("coastline") val coastline: Coastline? = Coastline(),
