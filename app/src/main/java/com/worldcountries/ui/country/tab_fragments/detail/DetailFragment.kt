@@ -97,6 +97,7 @@ class DetailFragment(private val countryName: String?) : Fragment() {
             pcPopGenderChart.data = pieData
             pcPopGenderChart.description.text = "Gender"
             pcPopGenderChart.description.typeface = Typeface.DEFAULT_BOLD
+            pcPopGenderChart.isDrawHoleEnabled = false
             pcPopGenderChart.invalidate()
         }
     }
@@ -117,6 +118,7 @@ class DetailFragment(private val countryName: String?) : Fragment() {
             pcPopAgeChart.data = pieData
             pcPopAgeChart.description.text = "Age Structure"
             pcPopAgeChart.description.typeface = Typeface.DEFAULT_BOLD
+            pcPopAgeChart.isDrawHoleEnabled = false
             pcPopAgeChart.invalidate()
         }
     }
@@ -144,6 +146,7 @@ class DetailFragment(private val countryName: String?) : Fragment() {
                 pcReligionChart.data = pieData
                 pcReligionChart.description.text = "Religions"
                 pcReligionChart.description.typeface = Typeface.DEFAULT_BOLD
+                pcReligionChart.isDrawHoleEnabled = false
                 pcReligionChart.invalidate()
             }
         } else {
@@ -177,6 +180,7 @@ class DetailFragment(private val countryName: String?) : Fragment() {
                 pcEthnicityChart.data = pieData
                 pcEthnicityChart.description.text = "Ethnic Groups"
                 pcEthnicityChart.description.typeface = Typeface.DEFAULT_BOLD
+                pcEthnicityChart.isDrawHoleEnabled = false
                 pcEthnicityChart.invalidate()
             }
         } else {
