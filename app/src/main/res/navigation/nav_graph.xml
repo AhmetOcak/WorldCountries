@@ -41,10 +41,10 @@
             app:destination="@id/countryFragment" />
     </fragment>
     <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.worldcountries.ui.settings.SettingsFragment"
+        android:id="@+id/ourWorldFragment"
+        android:name="com.worldcountries.ui.settings.OurWorldFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_our_world" />
     <fragment
         android:id="@+id/countryFragment"
         android:name="com.worldcountries.ui.country.CountryFragment"

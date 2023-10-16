@@ -13,7 +13,7 @@
         android:title="@string/favorites"
         android:icon="@drawable/baseline_favorite_border"/>
     <item
-        android:id="@+id/settingsFragment"
-        android:title="@string/settings"
-        android:icon="@drawable/outline_settings"/>
+        android:id="@+id/ourWorldFragment"
+        android:title="@string/our_world"
+        android:icon="@drawable/ic_earth"/>
 </menu>
