@@ -42,7 +42,7 @@ class SearchViewModel @Inject constructor(
                     _uiState.update {
                         it.copy(
                             isLoading = false,
-                            isError = true,
+                            isError = R.string.unknown != response.messageId,
                             errorMessageId = response.messageId,
                             resultList = listOf(),
                             isSearchResultEmpty = R.string.unknown == response.messageId
