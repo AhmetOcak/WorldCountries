@@ -1,4 +1,8 @@
-# WorldCountries
+# World Countries
+
+<img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/4fd4a238-c314-454a-8de7-1081a3cbc874" width="192" height="192"/>
+
+World Countries is an application that allows you to have information about countries. You can search for any country you want and view the details of the selected country. You can also add any country you like to your favorites.
 
 ## Tech Stack 📚
 
@@ -13,7 +17,7 @@
 * [Coil](https://github.com/coil-kt/coil)
 * [Okhttp](https://square.github.io/okhttp/)
 
-## Screens 🖼
+## Outputs 🖼
 
 |                  |             |
 |------------------|-------------|
@@ -28,3 +32,7 @@
 | Sort             | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/b1a44da1-7556-4988-8657-0aaee02eec6f" width="240" height="480"/>      | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/406e4419-dc9d-4f9d-b14e-189957c07c1d" width="240" height="480"/>     |
 | Filter           |  <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/7169e05a-5328-467f-9750-25b12ba6a7e8" width="240" height="480"/>     | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/6d7bd25e-800c-43d8-9a19-80de9c745469" width="240" height="480"/>     |  
 
+## Architecture 🏗
+The app uses MVVM [Model-View-ViewModel] architecture to have a unidirectional flow of data, separation of concern, testability, and a lot more.
+
+![mvvm](https://user-images.githubusercontent.com/73544434/197416569-d42a6bbe-126e-4776-9c8f-2791925f738c.png)
