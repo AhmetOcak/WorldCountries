@@ -30,7 +30,7 @@ World Countries is an application that allows you to have information about coun
 | Favorites Screen | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/a5507683-c832-496f-b6ec-c8b7e4f50ede" width="240" height="480"/>      | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/1946e073-2942-4025-a9a3-cc7dbec5af40" width="240" height="480"/>     |
 | Our World Screen | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/da28e113-972f-4337-8615-9a1057e28bc6" width="240" height="480"/>      | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/dde0e67b-17af-47f4-9321-c0517e05357d" width="240" height="480"/>     |
 | Sort             | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/2d06119f-4c8b-4805-83eb-d5532726754d" width="240" height="480"/>      | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/47b3ad49-0bf7-4c94-9c8c-139385d3397d" width="240" height="480"/>     |
-| Filter           |  <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/74e32206-b712-48fd-9b80-3c94387698dd" width="240" height="480"/>     | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/8218173c-1bbd-4c00-b30a-03f99527b68a" width="240" height="480"/>     |  
+| Filter           |  <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/74e32206-b712-48fd-9b80-3c94387698dd" width="240" height="480"/>     | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/a48f4d8e-9dad-4b75-83c5-66cdc9f320d1" width="240" height="480"/>     |  
 
 ## Architecture 🏗
 The app uses MVVM [Model-View-ViewModel] architecture to have a unidirectional flow of data, separation of concern, testability, and a lot more.
