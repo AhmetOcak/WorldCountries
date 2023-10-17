@@ -117,7 +117,7 @@ class CountryFragment : Fragment() {
         return FavoriteCountryEntity(
             commonName = data.name?.common ?: "",
             officialName = data.name?.official ?: "",
-            capital = data.capital.first(),
+            capital = if (data.capital.isNotEmpty()) data.capital.first() else "No capital",
             population = data.population.toString(),
             timezone = data.timezones.first(),
             altSpellings = data.altSpellings.toString(),
@@ -126,7 +126,7 @@ class CountryFragment : Fragment() {
             flagImgUrl = data.flags?.png ?: "",
             landlocked = data.landlocked ?: false,
             region = data.region ?: "",
-            subRegion = data.subregion ?: "",
+            subRegion = data.subregion ?: "No sub region",
             mapUrl = data.maps?.googleMaps ?: ""
         )
     }

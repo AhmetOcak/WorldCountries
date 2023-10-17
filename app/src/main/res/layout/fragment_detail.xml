@@ -13,6 +13,10 @@
             type="Boolean" />
 
         <variable
+            name="isCountryDataNull"
+            type="Boolean" />
+
+        <variable
             name="isEthnicityDataEmpty"
             type="Boolean" />
 
@@ -54,7 +58,7 @@
                 android:text="@string/geography"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textStyle="bold"
-                android:visibility="@{isLoading ? View.INVISIBLE : View.VISIBLE}"
+                android:visibility="@{isLoading || isCountryDataNull ? View.INVISIBLE : View.VISIBLE}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_introduction" />
 
@@ -128,7 +132,7 @@
                 android:text="@string/detail_people"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textStyle="bold"
-                android:visibility="@{isLoading ? View.INVISIBLE : View.VISIBLE}"
+                android:visibility="@{isLoading || isCountryDataNull ? View.INVISIBLE : View.VISIBLE}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ll_detail_geo" />
 
@@ -227,6 +231,20 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/pc_pop_age_chart" />
+
+            <TextView
+                android:id="@+id/tv_detail_no_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/there_is_no_detail"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:visibility="@{isLoading || !isCountryDataNull ? View.INVISIBLE : View.VISIBLE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5"
+                tools:visibility="gone" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>

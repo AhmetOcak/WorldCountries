@@ -56,6 +56,7 @@ class DetailFragment(private val countryName: String?) : Fragment() {
                 viewModel.uiState.collect { uiState ->
                     binding.apply {
                         isLoading = uiState.isLoading
+                        isCountryDataNull = uiState.countryData == null
                         isEthnicityDataEmpty = ethnicityEntries.isEmpty()
                         isReligionDataEmpty = religionEntries.isEmpty()
                         isPopAgeDataEmpty = popAgeEntries.isEmpty()
@@ -222,12 +223,12 @@ class DetailFragment(private val countryName: String?) : Fragment() {
 
             tvDetailPopDist.text = modifyText(
                 getString(R.string.detail_population_distribution),
-                data.geography?.populationDistribution
+                data.geography?.populationDistribution ?: "No pop distribution"
             )
 
             tvDetailNationality.text = modifyText(
                 getString(R.string.detail_nationality),
-                data.people?.nationality?.nationality
+                data.people?.nationality?.nationality ?: "No nationality"
             )
         }
     }
