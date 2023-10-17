@@ -2,20 +2,15 @@
 
 ## Tech Stack 📚
 
-* [Navigation](https://developer.android.com/guide/navigation)
-
-* [ViewModel](https://developer.android.com/jetpack/compose/libraries#viewmodel)
-
+* [Android Architecture Components](https://developer.android.com/topic/architecture)
+    * [Navigation](https://developer.android.com/guide/navigation)
+    * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
+    * [Lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle)
+    * [Repository](https://developer.android.com/topic/architecture/data-layer?hl=en)
 * [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
-
-* [Accompanist](https://google.github.io/accompanist/systemuicontroller/)
-
-* [Animations](https://developer.android.com/jetpack/compose/animation)
-
-* [Retrofit](https://square.github.io/retrofit)
-
-* [Coil](https://coil-kt.github.io/coil)
-
+* [Room](https://developer.android.com/training/data-storage/room)
+* [Retrofit](https://github.com/square/retrofit)
+* [Coil](https://github.com/coil-kt/coil)
 * [Okhttp](https://square.github.io/okhttp/)
 
 ## Screens 🖼
