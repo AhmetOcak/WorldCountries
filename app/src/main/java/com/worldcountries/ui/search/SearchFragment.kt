@@ -76,7 +76,7 @@ class SearchFragment : Fragment() {
         if (searchText.isBlank()) {
             binding.tilSearch.apply {
                 isErrorEnabled = true
-                error = "Please fill out this field."
+                error = getString(R.string.fill_field_error)
             }
         } else {
             binding.tilSearch.isErrorEnabled = false

@@ -87,8 +87,8 @@ class DetailFragment(private val countryName: String?) : Fragment() {
                 (data?.twentyFiveToFiftyFour?.females ?: 0) + (data?.fiftyFiveToSixtyFour?.females ?: 0) +
                 (data?.sixtyFiveAndOver?.females ?: 0)
 
-        entries.add(PieEntry(male.toFloat(), "Male"))
-        entries.add(PieEntry(female.toFloat(), "Female"))
+        entries.add(PieEntry(male.toFloat(), getString(R.string.male)))
+        entries.add(PieEntry(female.toFloat(), getString(R.string.female)))
 
         val dataSet = PieDataSet(entries, data?.date ?: "")
         dataSet.colors = getChartColors(requireContext())
@@ -96,7 +96,7 @@ class DetailFragment(private val countryName: String?) : Fragment() {
         val pieData = PieData(dataSet)
         binding.apply {
             pcPopGenderChart.data = pieData
-            pcPopGenderChart.description.text = "Gender"
+            pcPopGenderChart.description.text = getString(R.string.gender)
             pcPopGenderChart.description.typeface = Typeface.DEFAULT_BOLD
             pcPopGenderChart.isDrawHoleEnabled = false
             pcPopGenderChart.invalidate()
@@ -104,11 +104,11 @@ class DetailFragment(private val countryName: String?) : Fragment() {
     }
 
     private fun setPopAgeChart(data: AgeStructure?, entries: MutableList<PieEntry>) {
-        entries.add(PieEntry(data?.zeroToFourTeen?.percent?.toFloat() ?: 0f, "Ages 0-14"))
-        entries.add(PieEntry(data?.fifteenToTwentyFour?.percent?.toFloat() ?: 0f, "Ages 15-24"))
-        entries.add(PieEntry(data?.twentyFiveToFiftyFour?.percent?.toFloat() ?: 0f, "Ages 25-54"))
-        entries.add(PieEntry(data?.fiftyFiveToSixtyFour?.percent?.toFloat() ?: 0f, "Ages 55-64"))
-        entries.add(PieEntry(data?.sixtyFiveAndOver?.percent?.toFloat() ?: 0f, "Ages 65+"))
+        entries.add(PieEntry(data?.zeroToFourTeen?.percent?.toFloat() ?: 0f, getString(R.string.age_one)))
+        entries.add(PieEntry(data?.fifteenToTwentyFour?.percent?.toFloat() ?: 0f, getString(R.string.age_two)))
+        entries.add(PieEntry(data?.twentyFiveToFiftyFour?.percent?.toFloat() ?: 0f, getString(R.string.age_three)))
+        entries.add(PieEntry(data?.fiftyFiveToSixtyFour?.percent?.toFloat() ?: 0f, getString(R.string.age_four)))
+        entries.add(PieEntry(data?.sixtyFiveAndOver?.percent?.toFloat() ?: 0f, getString(R.string.age_five)))
 
         val dataSet = PieDataSet(entries, data?.date ?: "")
         dataSet.colors = getChartColors(requireContext())
@@ -117,7 +117,7 @@ class DetailFragment(private val countryName: String?) : Fragment() {
         binding.apply {
             isPopAgeDataEmpty = false
             pcPopAgeChart.data = pieData
-            pcPopAgeChart.description.text = "Age Structure"
+            pcPopAgeChart.description.text = getString(R.string.age_struct)
             pcPopAgeChart.description.typeface = Typeface.DEFAULT_BOLD
             pcPopAgeChart.isDrawHoleEnabled = false
             pcPopAgeChart.invalidate()
@@ -135,7 +135,7 @@ class DetailFragment(private val countryName: String?) : Fragment() {
         }
         if (entries.isNotEmpty()) {
             if (otherReligionPercent > 0f) {
-                entries.add(PieEntry(otherReligionPercent, "other"))
+                entries.add(PieEntry(otherReligionPercent, getString(R.string.other)))
             }
 
             val dataSet = PieDataSet(entries, data?.date ?: "")
@@ -145,7 +145,7 @@ class DetailFragment(private val countryName: String?) : Fragment() {
             binding.apply {
                 isReligionDataEmpty = false
                 pcReligionChart.data = pieData
-                pcReligionChart.description.text = "Religions"
+                pcReligionChart.description.text = getString(R.string.religion)
                 pcReligionChart.description.typeface = Typeface.DEFAULT_BOLD
                 pcReligionChart.isDrawHoleEnabled = false
                 pcReligionChart.invalidate()
@@ -169,7 +169,7 @@ class DetailFragment(private val countryName: String?) : Fragment() {
         }
         if (entries.isNotEmpty()) {
             if (otherEthnicityPercent > 0f) {
-                entries.add(PieEntry(otherEthnicityPercent, "other"))
+                entries.add(PieEntry(otherEthnicityPercent, getString(R.string.other)))
             }
 
             val dataSet = PieDataSet(entries, "")
@@ -179,7 +179,7 @@ class DetailFragment(private val countryName: String?) : Fragment() {
             binding.apply {
                 isEthnicityDataEmpty = false
                 pcEthnicityChart.data = pieData
-                pcEthnicityChart.description.text = "Ethnic Groups"
+                pcEthnicityChart.description.text = getString(R.string.ethnic_groups)
                 pcEthnicityChart.description.typeface = Typeface.DEFAULT_BOLD
                 pcEthnicityChart.isDrawHoleEnabled = false
                 pcEthnicityChart.invalidate()
@@ -223,12 +223,12 @@ class DetailFragment(private val countryName: String?) : Fragment() {
 
             tvDetailPopDist.text = modifyText(
                 getString(R.string.detail_population_distribution),
-                data.geography?.populationDistribution ?: "No pop distribution"
+                data.geography?.populationDistribution ?: getString(R.string.no_pop_dist)
             )
 
             tvDetailNationality.text = modifyText(
                 getString(R.string.detail_nationality),
-                data.people?.nationality?.nationality ?: "No nationality"
+                data.people?.nationality?.nationality ?: getString(R.string.no_nation)
             )
         }
     }

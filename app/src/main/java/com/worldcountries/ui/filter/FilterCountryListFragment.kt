@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.worldcountries.R
 import com.worldcountries.databinding.FragmentFilterCountryListBinding
 import com.worldcountries.model.filter.FilterType
 import com.worldcountries.ui.filter.adapter.FilterAdapter
@@ -118,7 +119,7 @@ class FilterCountryListFragment : Fragment() {
             viewModel.apply {
                 setFilterTypeSelected()
                 setSelectedFilterType(FilterType.CONTINENT)
-                setTitle("Continent")
+                setTitle(getString(R.string.filter_cont))
             }
         }
 
@@ -126,7 +127,7 @@ class FilterCountryListFragment : Fragment() {
             viewModel.apply {
                 setFilterTypeSelected()
                 setSelectedFilterType(FilterType.POPULATION)
-                setTitle("Population")
+                setTitle(getString(R.string.filter_pop))
             }
         }
 
@@ -134,7 +135,7 @@ class FilterCountryListFragment : Fragment() {
             viewModel.apply {
                 setFilterTypeSelected()
                 setSelectedFilterType(FilterType.CAR_SIDE)
-                setTitle("Car Side")
+                setTitle(getString(R.string.car_side))
             }
         }
     }

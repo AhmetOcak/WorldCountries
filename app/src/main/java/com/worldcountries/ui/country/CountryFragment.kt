@@ -20,12 +20,6 @@ import com.worldcountries.model.favorite_country.FavoriteCountryEntity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
-private val tabsArray = arrayOf(
-    "Overview",
-    "Detail",
-    "Map"
-)
-
 @AndroidEntryPoint
 class CountryFragment : Fragment() {
 
@@ -35,6 +29,12 @@ class CountryFragment : Fragment() {
     private val args: CountryFragmentArgs by navArgs()
 
     private val viewModel: CountryViewModel by viewModels()
+
+    private val tabsArray = arrayOf(
+        getString(R.string.overview_tab),
+        getString(R.string.detail_tab),
+        getString(R.string.maps_tab)
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -89,18 +89,18 @@ class CountryFragment : Fragment() {
                     }
 
                     if (uiState.isError) {
-                        showToastMessage("Something went wrong !!")
+                        showToastMessage(getString(R.string.error_toast))
                         viewModel.consumeEvent()
                     }
 
                     if (uiState.isSucceed) {
                         when (uiState.isOperationAddOrRemove) {
                             DatabaseOp.ADD -> {
-                                showToastMessage("Country successfully added to favorites.")
+                                showToastMessage(getString(R.string.added_success))
                             }
 
                             DatabaseOp.DELETE -> {
-                                showToastMessage("Country successfully removed from favorites.")
+                                showToastMessage(getString(R.string.removed_success))
                             }
 
                             else -> {}
@@ -117,7 +117,7 @@ class CountryFragment : Fragment() {
         return FavoriteCountryEntity(
             commonName = data.name?.common ?: "",
             officialName = data.name?.official ?: "",
-            capital = if (data.capital.isNotEmpty()) data.capital.first() else "No capital",
+            capital = if (data.capital.isNotEmpty()) data.capital.first() else getString(R.string.no_cap),
             population = data.population.toString(),
             timezone = data.timezones.first(),
             altSpellings = data.altSpellings.toString(),
@@ -126,7 +126,7 @@ class CountryFragment : Fragment() {
             flagImgUrl = data.flags?.png ?: "",
             landlocked = data.landlocked ?: false,
             region = data.region ?: "",
-            subRegion = data.subregion ?: "No sub region",
+            subRegion = data.subregion ?: getString(R.string.no_sub_reg),
             mapUrl = data.maps?.googleMaps ?: ""
         )
     }

@@ -69,6 +69,34 @@
     <string name="there_is_no_detail">There is no detail.</string>
 
     <style name="see_the_result">See the result</style>
-
     <style name="apply">Apply</style>
+
+    <!-- Chart strings -->
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="gender">Gender</string>
+    <string name="age_one">Ages 0–14</string>
+    <string name="age_two">Ages 15–24</string>
+    <string name="age_three">Ages 25–54</string>
+    <string name="age_four">Ages 55–64</string>
+    <string name="age_five">Ages 65+</string>
+    <string name="age_struct">Age Structure</string>
+    <string name="other">other</string>
+    <string name="religion">Religions</string>
+    <string name="ethnic_groups">Ethnic Groups</string>
+
+    <string name="no_pop_dist">No pop distribution</string>
+    <string name="no_nation">No nationality</string>
+    <string name="no_cap">No capital</string>
+    <string name="no_sub_reg">No subregion</string>
+
+    <string name="added_success">Country successfully added to favorites.</string>
+    <string name="removed_success">Country successfully removed from favorites.</string>
+    <string name="error_toast">Something went wrong !!</string>
+
+    <string name="filter_cont">Continent</string>
+    <string name="filter_pop">Population</string>
+    <string name="filter_car_side">Car Side</string>
+
+    <string name="fill_field_error">Please fill out this field.</string>
 </resources>
