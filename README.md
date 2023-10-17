@@ -1,6 +1,6 @@
 # World Countries
 
-<img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/4fd4a238-c314-454a-8de7-1081a3cbc874" width="192" height="192"/>
+<img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/91b594e6-726c-461a-91b4-d9ba1231133c" width="192" height="192"/>
 
 World Countries is an application that allows you to have information about countries. You can search for any country you want and view the details of the selected country. You can also add any country you like to your favorites.
 
@@ -21,16 +21,16 @@ World Countries is an application that allows you to have information about coun
 
 |                  |             |
 |------------------|-------------|
-| Detail Screen     | <video src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/67a731b9-ba7e-43d8-a668-f72756f4eb05" width="240" height="480"/>     |
+| Detail Screen     | <video src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/cf78838e-7687-4e42-9461-3940b97d9423" width="240" height="480"/>     |
 
 |                  | Light | Dark |
 |------------------|-------|------|
-| Home Screen      | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/e23d134f-e140-4a3a-ae45-88933c5ed2e0" width="240" height="480"/>       | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/955dc21c-db4f-4a32-bcae-78813a8fda23" width="240" height="480"/>      |
-| Search Screen    | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/1c1bf766-a9a7-420a-92f9-a4700d8b7db0" width="240" height="480"/>      |  <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/64f70658-9001-496f-b2a5-9a7836a20309" width="240" height="480"/>    |
-| Favorites Screen | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/b98bfa22-aa11-43e0-83a6-b8ab239a7a5e" width="240" height="480"/>      | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/82a983c9-8c35-4896-b585-14d01f54213c" width="240" height="480"/>     |
-| Our World Screen | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/312fba47-e0eb-494e-ab67-710005412da1" width="240" height="480"/>      | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/9e4f502d-82b4-40a8-8b29-ba3a0b0fa14f" width="240" height="480"/>     |
-| Sort             | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/b1a44da1-7556-4988-8657-0aaee02eec6f" width="240" height="480"/>      | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/406e4419-dc9d-4f9d-b14e-189957c07c1d" width="240" height="480"/>     |
-| Filter           |  <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/7169e05a-5328-467f-9750-25b12ba6a7e8" width="240" height="480"/>     | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/6d7bd25e-800c-43d8-9a19-80de9c745469" width="240" height="480"/>     |  
+| Home Screen      | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/0ee36278-a99b-4ab9-993d-dfe206f8c144" width="240" height="480"/>       | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/c737547a-b536-4fc2-8d30-f4a763384187" width="240" height="480"/>      |
+| Search Screen    | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/0104250c-2c1f-4327-a428-68db4341709c" width="240" height="480"/>      |  <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/b176b162-f02f-4911-8f0b-565c45fc43a9" width="240" height="480"/>    |
+| Favorites Screen | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/a5507683-c832-496f-b6ec-c8b7e4f50ede" width="240" height="480"/>      | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/1946e073-2942-4025-a9a3-cc7dbec5af40" width="240" height="480"/>     |
+| Our World Screen | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/da28e113-972f-4337-8615-9a1057e28bc6" width="240" height="480"/>      | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/dde0e67b-17af-47f4-9321-c0517e05357d" width="240" height="480"/>     |
+| Sort             | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/2d06119f-4c8b-4805-83eb-d5532726754d" width="240" height="480"/>      | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/47b3ad49-0bf7-4c94-9c8c-139385d3397d" width="240" height="480"/>     |
+| Filter           |  <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/74e32206-b712-48fd-9b80-3c94387698dd" width="240" height="480"/>     | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/8218173c-1bbd-4c00-b30a-03f99527b68a" width="240" height="480"/>     |  
 
 ## Architecture 🏗
 The app uses MVVM [Model-View-ViewModel] architecture to have a unidirectional flow of data, separation of concern, testability, and a lot more.
