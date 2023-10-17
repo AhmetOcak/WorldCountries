@@ -31,9 +31,9 @@ class CountryFragment : Fragment() {
     private val viewModel: CountryViewModel by viewModels()
 
     private val tabsArray = arrayOf(
-        getString(R.string.overview_tab),
-        getString(R.string.detail_tab),
-        getString(R.string.maps_tab)
+        "Overview",
+        "Detail",
+        "Map"
     )
 
     override fun onCreateView(
