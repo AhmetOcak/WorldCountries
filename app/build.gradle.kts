@@ -73,15 +73,6 @@ dependencies {
     val lifecycleViewModelVersion = "2.6.1"
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleViewModelVersion")
 
-    val turbineVersion = "1.0.0"
-    testImplementation("app.cash.turbine:turbine:$turbineVersion")
-
-    val splashVersion = "1.0.1"
-    implementation("androidx.core:core-splashscreen:$splashVersion")
-
-    val coroutineTestVersion = "1.6.4"
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutineTestVersion")
-
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
 
     implementation("io.coil-kt:coil:2.4.0")
