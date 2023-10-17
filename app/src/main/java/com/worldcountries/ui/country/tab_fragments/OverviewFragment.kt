@@ -50,7 +50,7 @@ class OverviewFragment(private val countryData: Country) : Fragment() {
 
         tvCapital.text = modifyText(
             getString(R.string.overview_capital),
-            countryData.capital.first()
+            if (countryData.capital.isNotEmpty()) countryData.capital.first() else "No capital"
         )
 
         tvRegion.text = modifyText(
@@ -60,7 +60,7 @@ class OverviewFragment(private val countryData: Country) : Fragment() {
 
         tvSubregion.text = modifyText(
             getString(R.string.overview_subregion),
-            countryData.subregion
+            countryData.subregion ?: "No subregion"
         )
 
         tvPop.text = modifyText(
