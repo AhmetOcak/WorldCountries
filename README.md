@@ -36,3 +36,9 @@ World Countries is an application that allows you to have information about coun
 The app uses MVVM [Model-View-ViewModel] architecture to have a unidirectional flow of data, separation of concern, testability, and a lot more.
 
 ![mvvm](https://user-images.githubusercontent.com/73544434/197416569-d42a6bbe-126e-4776-9c8f-2791925f738c.png)
+
+## Country Data Source
+
+
+
+-> https://github.com/iancoleman/cia_world_factbook_api (I rearranged the json data file as there was information I didn't plan to use.)
