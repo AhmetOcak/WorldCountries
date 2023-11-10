@@ -41,4 +41,4 @@ The app uses MVVM [Model-View-ViewModel] architecture to have a unidirectional f
 
 
 
--> https://github.com/iancoleman/cia_world_factbook_api (I rearranged the json data file as there was information I didn't plan to use.)
+-> https://github.com/iancoleman/cia_world_factbook_api (I rearranged the JSON data file as there was information I didn't plan to use.)
