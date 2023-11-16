@@ -19,6 +19,11 @@ World Countries is an application that allows you to have information about coun
 
 ## Outputs 🖼
 
+|                  |              |
+|------------------|--------------|
+| Video from app   | <video src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/367cd76d-d1ee-4e8d-9dac-de5af2f7bcb5" width="240" height="480" /> |
+
+
 |                  | Light | Dark |
 |------------------|-------|------|
 | Home Screen      | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/0ee36278-a99b-4ab9-993d-dfe206f8c144" width="240" height="480"/>       | <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/c737547a-b536-4fc2-8d30-f4a763384187" width="240" height="480"/>      |
