@@ -8,14 +8,23 @@ World Countries is an application I developed using Kotlin-XML that allows you t
 
 * [Android Architecture Components](https://developer.android.com/topic/architecture)
     * [Navigation](https://developer.android.com/guide/navigation)
+      
     * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
+      
     * [Lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle)
+      
     * [Repository](https://developer.android.com/topic/architecture/data-layer?hl=en)
+      
 * [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
+  
 * [Room](https://developer.android.com/training/data-storage/room)
+  
 * [Retrofit](https://github.com/square/retrofit)
+  
 * [Coil](https://github.com/coil-kt/coil)
+  
 * [Okhttp](https://square.github.io/okhttp/)
+  
 * [Android Chart](https://github.com/PhilJay/MPAndroidChart)
 
 ## Outputs 🖼
@@ -43,8 +52,10 @@ The app uses MVVM [Model-View-ViewModel] architecture to have a unidirectional f
 
 ![mvvm](https://user-images.githubusercontent.com/73544434/197416569-d42a6bbe-126e-4776-9c8f-2791925f738c.png)
 
-## Country Data Source
+## Country Data Source 📦
 
+-> [CIA World Factbook API](https://github.com/iancoleman/cia_world_factbook_api) (I rearranged the JSON data file as there was information I didn't plan to use.)
 
+## Known issues ⚠
 
--> https://github.com/iancoleman/cia_world_factbook_api (I rearranged the JSON data file as there was information I didn't plan to use.)
+* The color of description texts in charts does not change in dark mode.
