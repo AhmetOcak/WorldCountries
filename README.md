@@ -2,7 +2,7 @@
 
 <img src="https://github.com/AhmetOcak/WorldCountries/assets/73544434/91b594e6-726c-461a-91b4-d9ba1231133c" width="192" height="192"/>
 
-World Countries is an application that allows you to have information about countries. You can search for any country you want and view the details of the selected country. You can also add any country you like to your favorites.
+World Countries is an application I developed using Kotlin-XML that allows you to get information about countries. You can search for any country you want in the application and view the selected country's history, geography, population, flag, location on the map, etc. You can get information about. You can also add or remove any country you want to your favorites.
 
 ## Tech Stack 📚
 
@@ -16,6 +16,7 @@ World Countries is an application that allows you to have information about coun
 * [Retrofit](https://github.com/square/retrofit)
 * [Coil](https://github.com/coil-kt/coil)
 * [Okhttp](https://square.github.io/okhttp/)
+* [Android Chart](https://github.com/PhilJay/MPAndroidChart)
 
 ## Outputs 🖼
 
