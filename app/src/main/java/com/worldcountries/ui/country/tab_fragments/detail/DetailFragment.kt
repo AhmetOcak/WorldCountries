@@ -2,10 +2,10 @@ package com.worldcountries.ui.country.tab_fragments.detail
 
 import android.graphics.Typeface
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -14,13 +14,13 @@ import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.worldcountries.R
-import com.worldcountries.common.getChartColors
-import com.worldcountries.common.modifyText
 import com.worldcountries.databinding.FragmentDetailBinding
 import com.worldcountries.model.country_detail.data.Data
 import com.worldcountries.model.country_detail.data.people.age_structure.AgeStructure
 import com.worldcountries.model.country_detail.data.people.ethnic_groups.Ethnicity
 import com.worldcountries.model.country_detail.data.people.religion.Religions
+import com.worldcountries.utils.ChartUtils.getChartColors
+import com.worldcountries.utils.formatText
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -191,42 +191,42 @@ class DetailFragment(private val countryName: String?) : Fragment() {
 
     private fun setTextData(data: Data) {
         binding.apply {
-            tvIntroduction.text = modifyText(
+            tvIntroduction.text = formatText(
                 "",
                 data.introduction?.background
             )
 
-            tvDetailLoc.text = modifyText(
+            tvDetailLoc.text = formatText(
                 getString(R.string.detail_location),
                 data.geography?.location
             )
 
-            tvDetailMapRef.text = modifyText(
+            tvDetailMapRef.text = formatText(
                 getString(R.string.detail_map_reference),
                 data.geography?.mapReferences
             )
 
-            tvDetailCoastline.text = modifyText(
+            tvDetailCoastline.text = formatText(
                 getString(R.string.detail_coastline),
                 "${data.geography?.coastline?.value} ${data.geography?.coastline?.units}"
             )
 
-            tvDetailClimate.text = modifyText(
+            tvDetailClimate.text = formatText(
                 getString(R.string.detail_climate),
                 data.geography?.climate
             )
 
-            tvDetailTerrain.text = modifyText(
+            tvDetailTerrain.text = formatText(
                 getString(R.string.detail_terrain),
                 data.geography?.terrain
             )
 
-            tvDetailPopDist.text = modifyText(
+            tvDetailPopDist.text = formatText(
                 getString(R.string.detail_population_distribution),
                 data.geography?.populationDistribution ?: getString(R.string.no_pop_dist)
             )
 
-            tvDetailNationality.text = modifyText(
+            tvDetailNationality.text = formatText(
                 getString(R.string.detail_nationality),
                 data.people?.nationality?.nationality ?: getString(R.string.no_nation)
             )

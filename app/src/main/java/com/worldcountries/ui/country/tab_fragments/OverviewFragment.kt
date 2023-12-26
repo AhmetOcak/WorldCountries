@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.worldcountries.R
-import com.worldcountries.common.modifyText
 import com.worldcountries.databinding.FragmentOverviewBinding
 import com.worldcountries.model.country.Country
+import com.worldcountries.utils.formatText
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -38,47 +38,47 @@ class OverviewFragment(private val countryData: Country) : Fragment() {
     }
 
     private fun FragmentOverviewBinding.setTextData() {
-        tvCommonName.text = modifyText(
+        tvCommonName.text = formatText(
             getString(R.string.overview_common_name),
             countryData.name?.common
         )
 
-        tvOfficialName.text = modifyText(
+        tvOfficialName.text = formatText(
             getString(R.string.overview_official_name),
             countryData.name?.official
         )
 
-        tvCapital.text = modifyText(
+        tvCapital.text = formatText(
             getString(R.string.overview_capital),
             if (countryData.capital.isNotEmpty()) countryData.capital.first() else getString(R.string.no_cap)
         )
 
-        tvRegion.text = modifyText(
+        tvRegion.text = formatText(
             getString(R.string.region),
             countryData.region
         )
 
-        tvSubregion.text = modifyText(
+        tvSubregion.text = formatText(
             getString(R.string.overview_subregion),
             countryData.subregion ?: getString(R.string.no_sub_reg)
         )
 
-        tvPop.text = modifyText(
+        tvPop.text = formatText(
             getString(R.string.overview_overview_pop),
             String.format("%,d", countryData.population)
         )
 
-        tvLandlocked.text = modifyText(
+        tvLandlocked.text = formatText(
             getString(R.string.overview_landlocked),
             countryData.landlocked.toString()
         )
 
-        tvTimezone.text = modifyText(
+        tvTimezone.text = formatText(
             getString(R.string.overview_timezone),
             countryData.timezones.first()
         )
 
-        tvAltSpellings.text = modifyText(
+        tvAltSpellings.text = formatText(
             getString(R.string.overview_alt_spellings),
             countryData.altSpellings.toString()
                 .replace('[', ' ')

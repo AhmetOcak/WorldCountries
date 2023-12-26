@@ -12,7 +12,6 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.worldcountries.R
-import com.worldcountries.common.getGridSpan
 import com.worldcountries.databinding.FragmentFavoritesBinding
 import com.worldcountries.design.MarginItemDecoration
 import com.worldcountries.model.country.CoatOfArms
@@ -23,6 +22,7 @@ import com.worldcountries.model.country.Name
 import com.worldcountries.model.favorite_country.FavoriteCountryEntity
 import com.worldcountries.ui.adapter.CountryListAdapter
 import com.worldcountries.ui.adapter.Screen
+import com.worldcountries.utils.getGridSpan
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

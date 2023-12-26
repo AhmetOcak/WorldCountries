@@ -12,11 +12,11 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.worldcountries.R
-import com.worldcountries.common.getGridSpan
 import com.worldcountries.databinding.FragmentSearchBinding
 import com.worldcountries.design.MarginItemDecoration
 import com.worldcountries.ui.adapter.CountryListAdapter
 import com.worldcountries.ui.adapter.Screen
+import com.worldcountries.utils.getGridSpan
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -42,7 +42,7 @@ class SearchFragment : Fragment() {
         val adapter = CountryListAdapter(findNavController(), Screen.SEARCH)
         binding.rvSearch.apply {
             this.adapter = adapter
-            layoutManager = GridLayoutManager(context, getGridSpan(context))
+            layoutManager = GridLayoutManager(context, getGridSpan(requireContext()))
             addItemDecoration(MarginItemDecoration(resources.getDimensionPixelSize(R.dimen.two_level_margin)))
         }
 

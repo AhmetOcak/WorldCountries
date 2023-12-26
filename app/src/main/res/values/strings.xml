@@ -71,7 +71,7 @@
     <style name="see_the_result">See the result</style>
     <style name="apply">Apply</style>
 
-    <!-- Chart strings -->
+    <!-- ChartUtils strings -->
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="gender">Gender</string>
