@@ -1,4 +1,4 @@
-package com.worldcountries.data.repository
+package com.worldcountries.domain.repository
 
 import android.content.Context
 import com.worldcountries.common.Response

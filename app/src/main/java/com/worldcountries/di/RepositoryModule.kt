@@ -3,7 +3,7 @@ package com.worldcountries.di
 import com.worldcountries.data.local.datasource.country_detail.CountriesDetailsLocalDataSource
 import com.worldcountries.data.local.datasource.favorite_country.FavoriteCountriesLocalDataSource
 import com.worldcountries.data.remote.datasource.WorldCountriesRemoteDataSource
-import com.worldcountries.data.repository.WorldCountriesRepository
+import com.worldcountries.domain.repository.WorldCountriesRepository
 import com.worldcountries.data.repository.WorldCountriesRepositoryImpl
 import dagger.Module
 import dagger.Provides

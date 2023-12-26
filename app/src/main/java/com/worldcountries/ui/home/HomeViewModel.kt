@@ -3,7 +3,7 @@ package com.worldcountries.ui.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.worldcountries.common.Response
-import com.worldcountries.data.repository.WorldCountriesRepository
+import com.worldcountries.domain.repository.WorldCountriesRepository
 import com.worldcountries.model.country.Country
 import com.worldcountries.model.filter.Filter
 import com.worldcountries.model.filter.FilterType

@@ -3,7 +3,7 @@ package com.worldcountries.ui.settings
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.worldcountries.data.repository.WorldCountriesRepository
+import com.worldcountries.domain.repository.WorldCountriesRepository
 import com.worldcountries.model.country_detail.data.Data
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

@@ -2,7 +2,7 @@ package com.worldcountries.ui.favorites
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.worldcountries.data.repository.WorldCountriesRepository
+import com.worldcountries.domain.repository.WorldCountriesRepository
 import com.worldcountries.model.favorite_country.FavoriteCountryEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
